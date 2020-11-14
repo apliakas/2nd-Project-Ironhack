@@ -36,14 +36,49 @@ router.post("/signup", (req, res) => {
         passwordHash: hashedPassword,
       })
         .then((user) => {
-          req.session.currentUser = user;
+          req.session.user = user;
+          console.log(`user is ${user}`);
           res.redirect("/user-profile");
         })
         .catch((err) => {
-          res.render("auth/signup", {
+          res.render("signup", {
             errorMessage: "The username or email address is already in use.",
           });
         });
+    })
+    .catch((err) => console.error(err));
+});
+
+router.get("/user-profile", (req, res) => {
+  if (req.session.user) {
+    res.render("user-profile", { userInSession: req.session.user });
+  } else {
+    console.log(`user session doesn't exist`);
+    res.redirect("/login");
+  }
+});
+
+router.get("/login", (req, res) => res.render("login"));
+
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  User.findOne({ username })
+    .then((user) => {
+      console.log(user.passwordHash);
+      if (!user) {
+        res.render("login", {
+          errorMessage: `Username not found. Please try again.`,
+        });
+        return;
+      } else if (bcrypt.compareSync(password, user.passwordHash)) {
+        req.session.user = user;
+        console.log(user);
+        res.redirect("/user-profile");
+      } else {
+        res.render("login", {
+          errorMessage: "Incorrect password.",
+        });
+      }
     })
     .catch((err) => console.error(err));
 });

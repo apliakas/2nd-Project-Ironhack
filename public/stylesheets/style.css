@@ -18,3 +18,19 @@
 .submit-button {
   padding: 1rem 0rem;
 }
+
+.homepage-links {
+  display: flex;
+  flex-direction: column;
+}
+.login-container {
+  max-width: 50vw;
+}
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+.login-container input {
+  margin-bottom: 1rem;
+  padding: 0.3rem;
+}

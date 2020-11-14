@@ -19,7 +19,14 @@ const userSchema = new mongoose.Schema({
   favArtist: {
     type: String,
     required: false,
-    unique: false,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
   },
 });
 
