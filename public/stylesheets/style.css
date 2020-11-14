@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.signup-form-container {
+  max-width: 50vw;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+.signup-form input {
+  margin-bottom: 1rem;
+  padding: 0.3rem;
+}
+.submit-button {
+  padding: 1rem 0rem;
+}
