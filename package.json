@@ -4,9 +4,11 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.17.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.10.14"
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mongoose": "^5.10.14",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {},
   "scripts": {
