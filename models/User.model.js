@@ -1,5 +1,27 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI, {
-  userNewUrlParser: true,
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  passwordHash: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  favArtist: {
+    type: String,
+    required: false,
+    unique: false,
+  },
 });
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;
