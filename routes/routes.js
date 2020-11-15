@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const axios = require("axios");
 const fetch = require("node-fetch");
+let artArr = [];
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -54,10 +55,10 @@ router.post("/signup", (req, res) => {
 router.get("/user-profile", (req, res) => {
   if (req.session.user) {
     const user = req.session.user;
-    const favArtistResults = rijksFetch(user);
-    res.render("user-profile", {
-      data: { userInSession: user, favArtistResults },
-    });
+    rijksFetch(user);
+    setTimeout(() => {
+      res.render("user-profile", { userInSession: user });
+    }, 500);
   } else {
     res.redirect("/login");
   }
@@ -87,12 +88,19 @@ router.post("/login", (req, res) => {
 });
 
 const rijksFetch = (user) => {
+  artArr.splice(0, artArr.length);
   const { favArtist } = user;
   axios
     .get(
-      `https://www.rijksmuseum.nl/api/en/collection?key=eHQ8Pjnq&principalOrFirstMaker=${favArtist}`
+      `https://www.rijksmuseum.nl/api/en/collection?key=eHQ8Pjnq&involvedMaker=${favArtist}&ps=15`
     )
-    .then((res) => console.log(res.data.artObjects.length))
+    .then((res) => {
+      for (let art of res.data.artObjects) {
+        artArr.push([art.longTitle, art.webImage.url]);
+      }
+      user.favArtistInfo = artArr;
+      console.log(user.favArtistInfo);
+    })
     .catch((err) => console.error(err));
 };
 

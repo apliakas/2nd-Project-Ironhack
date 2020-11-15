@@ -34,3 +34,11 @@
   margin-bottom: 1rem;
   padding: 0.3rem;
 }
+.artwork {
+  max-width: 200px;
+}
+.artwork-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
