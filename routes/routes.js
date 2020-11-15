@@ -53,7 +53,6 @@ router.get("/user-profile", (req, res) => {
   if (req.session.user) {
     res.render("user-profile", { userInSession: req.session.user });
   } else {
-    console.log(`user session doesn't exist`);
     res.redirect("/login");
   }
 });
@@ -64,7 +63,6 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
   User.findOne({ username })
     .then((user) => {
-      console.log(user.passwordHash);
       if (!user) {
         res.render("login", {
           errorMessage: `Username not found. Please try again.`,
@@ -72,7 +70,6 @@ router.post("/login", (req, res) => {
         return;
       } else if (bcrypt.compareSync(password, user.passwordHash)) {
         req.session.user = user;
-        console.log(user);
         res.redirect("/user-profile");
       } else {
         res.render("login", {
