@@ -92,14 +92,17 @@ const rijksFetch = (user) => {
   const { favArtist } = user;
   axios
     .get(
-      `https://www.rijksmuseum.nl/api/en/collection?key=eHQ8Pjnq&involvedMaker=${favArtist}&ps=15`
+      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${favArtist}&ps=20&imgOnly=true`
     )
     .then((res) => {
+      console.log(res.data);
       for (let art of res.data.artObjects) {
-        artArr.push([art.longTitle, art.webImage.url]);
+        if (art.webImage) {
+          artArr.push([art.longTitle, art.webImage.url]);
+        }
       }
-      user.favArtistInfo = artArr;
       console.log(user.favArtistInfo);
+      return (user.favArtistInfo = artArr);
     })
     .catch((err) => console.error(err));
 };
