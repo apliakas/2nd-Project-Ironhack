@@ -1,6 +1,7 @@
 <h1>Testing user profile page</h1>
-{{#if userInSession}}
-<p>Welcome {{userInSession.firstName}}</p>
+{{#if data.userInSession}}
+<p>Welcome {{data.userInSession.firstName}}</p>
+<p>{{data.favArtistResults}}</p>
 {{else}}
 <p>Please log in!</p>
 <a href="/login">Login Page</a>

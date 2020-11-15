@@ -6,6 +6,8 @@ const bcrypt = require("bcrypt");
 const saltRounds = 12;
 const mongoose = require("mongoose");
 const session = require("express-session");
+const axios = require("axios");
+const fetch = require("node-fetch");
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -51,7 +53,11 @@ router.post("/signup", (req, res) => {
 
 router.get("/user-profile", (req, res) => {
   if (req.session.user) {
-    res.render("user-profile", { userInSession: req.session.user });
+    const user = req.session.user;
+    const favArtistResults = rijksFetch(user);
+    res.render("user-profile", {
+      data: { userInSession: user, favArtistResults },
+    });
   } else {
     res.redirect("/login");
   }
@@ -79,5 +85,15 @@ router.post("/login", (req, res) => {
     })
     .catch((err) => console.error(err));
 });
+
+const rijksFetch = (user) => {
+  const { favArtist } = user;
+  axios
+    .get(
+      `https://www.rijksmuseum.nl/api/en/collection?key=eHQ8Pjnq&principalOrFirstMaker=${favArtist}`
+    )
+    .then((res) => console.log(res.data.artObjects.length))
+    .catch((err) => console.error(err));
+};
 
 module.exports = router;
