@@ -9,6 +9,8 @@ const session = require("express-session");
 const axios = require("axios");
 const fetch = require("node-fetch");
 let artArr = [];
+let projectBoard = [];
+let resultsArr = [];
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -54,7 +56,7 @@ router.post("/signup", (req, res) => {
 router.get("/user-profile", (req, res) => {
   if (req.session.user) {
     const user = req.session.user;
-    rijksFetch(user);
+    rijksFetchFavArtist(user);
     setTimeout(() => {
       res.render("user-profile", { userInSession: user });
     }, 500);
@@ -86,7 +88,29 @@ router.post("/login", (req, res) => {
     .catch((err) => console.error(err));
 });
 
-const rijksFetch = (user) => {
+router.get("/create", (req, res) => {
+  if (req.session.user) {
+    res.render("create", { userInSession: req.session.user });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.post("/create", (req, res) => {
+  const user = req.session.user;
+  user.artist = req.body.artist;
+  if (req.session.user) {
+    rijksFetchNewArtist(user);
+    setTimeout(() => {
+      console.log(resultsArr);
+      res.render("create", { userInSession: user });
+    }, 500);
+  } else {
+    res.redirect("/login");
+  }
+});
+
+const rijksFetchFavArtist = (user) => {
   artArr.splice(0, artArr.length);
   const { favArtist } = user;
   axios
@@ -100,6 +124,24 @@ const rijksFetch = (user) => {
         }
       }
       return (user.favArtistInfo = artArr);
+    })
+    .catch((err) => console.error(err));
+};
+
+const rijksFetchNewArtist = (user) => {
+  resultsArr.splice(0, resultsArr.length);
+  console.log(`SECOND: ${user.artist}`);
+  axios
+    .get(
+      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${user.artist}&ps=20&imgOnly=true`
+    )
+    .then((res) => {
+      for (let art of res.data.artObjects) {
+        if (art.webImage) {
+          resultsArr.push([art]);
+        }
+      }
+      return (user.resultsArr = resultsArr);
     })
     .catch((err) => console.error(err));
 };

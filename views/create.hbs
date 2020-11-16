@@ -1,0 +1,17 @@
+<h2>Search the Rijksmuseum collections to add images to your project board</h2>
+<form action="/create" method="POST">
+    <label for="rijks-search">Search for any Dutch artist</label>
+    <input type="text" id="rijks-search" name="artist" value="{{userInSession.favArtist}}">
+    <button type="submit">Submit</button>
+</form>
+{{#if userInSession.resultsArr}}
+<h2>Results from your artist, {{userInSession.artist}}, below:</h2>
+{{#each userInSession.resultsArr}}
+
+<figure class="artwork-container">
+    <img class="artwork" src="{{this.[0].webImage.url}}" alt="{{this.[0].longTitle}}">
+    <figcaption>{{this.[0].longTitle}}</figcaption>
+</figure>
+
+{{/each}}
+{{/if}}
