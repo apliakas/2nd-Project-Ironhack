@@ -40,7 +40,6 @@ router.post("/signup", (req, res) => {
       })
         .then((user) => {
           req.session.user = user;
-          console.log(`user is ${user}`);
           res.redirect("/user-profile");
         })
         .catch((err) => {
@@ -95,13 +94,11 @@ const rijksFetch = (user) => {
       `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${favArtist}&ps=20&imgOnly=true`
     )
     .then((res) => {
-      console.log(res.data);
       for (let art of res.data.artObjects) {
         if (art.webImage) {
           artArr.push([art.longTitle, art.webImage.url]);
         }
       }
-      console.log(user.favArtistInfo);
       return (user.favArtistInfo = artArr);
     })
     .catch((err) => console.error(err));
