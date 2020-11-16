@@ -98,6 +98,7 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
   const user = req.session.user;
+  console.log(req.body);
   user.artist = req.body.artist;
   if (req.session.user) {
     rijksFetchNewArtist(user);
@@ -115,7 +116,7 @@ const rijksFetchFavArtist = (user) => {
   const { favArtist } = user;
   axios
     .get(
-      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${favArtist}&ps=20&imgOnly=true`
+      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${favArtist}&ps=20&imgOnly=true&type=painting`
     )
     .then((res) => {
       for (let art of res.data.artObjects) {
@@ -133,7 +134,7 @@ const rijksFetchNewArtist = (user) => {
   console.log(`SECOND: ${user.artist}`);
   axios
     .get(
-      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${user.artist}&ps=20&imgOnly=true`
+      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${user.artist}&ps=20&imgOnly=true&type=painting`
     )
     .then((res) => {
       for (let art of res.data.artObjects) {
