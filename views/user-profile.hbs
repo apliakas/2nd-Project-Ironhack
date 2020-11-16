@@ -1,7 +1,16 @@
 <h1>Testing user profile page</h1>
 {{#if userInSession}}
 <p>Welcome {{userInSession.firstName}}</p>
+<div>
+    <h2>Your favorite Dutch artist is: {{userInSession.favArtist}}</h2>
+</div>
+{{#each userInSession.favArtistInfo}}
+<figure class="artwork-container">
+    <img class="artwork" src="{{this.[1]}}" alt="{{this.[0]}}">
+    <figcaption>{{this.[0]}}</figcaption>
+</figure>
+{{/each}}
 {{else}}
-<p>Please log in!</p>
-<a href="/login">Login Page</a>
+<>Please log in!</>
+<a href=" /login">Login Page</a>
 {{/if}}
