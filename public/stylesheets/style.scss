@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  min-height: 100vh;
+  font-size: 10px;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto min-content;
+  font-size: 1.6rem;
+}
+
+ul {
+  list-style: none;
+}
+
+.view {
+  &--centered-with-image {
+    background-image: url("../image/SK-C-5.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.auth {
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  padding: 18px;
+
+  .links {
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+    text-align: end;
+
+    .login-link {
+      padding: 5px;
+      border-right: 3px solid #5c2018;
+    }
+
+    a {
+      text-decoration: none;
+      color: #5c2018;
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 36px;
+    width: 400px;
+
+    .login-input {
+      width: 100%;
+      height: 25px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 36px;
+    width: 400px;
+    min-width: 200px;
+
+    input {
+      width: 100%;
+      height: 25px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .submit-button {
+    width: 100%;
+    text-align: center;
+    padding: 5px 0px;
+    margin-top: 10px;
+    background-color: #bc4639;
+    color: #f3e0dc;
+    border: none;
+  }
+
+  .submit-button:hover {
+    background-color: #f3e0dc;
+    color: #bc4639;
+    border: 1px solid #bc4639;
+  }
+
+  .error {
+    text-align: center;
+    background-color: rgb(156, 48, 48);
+    padding: 15px 20px;
+    margin: 20px 60px;
+    color: #f3e0dc;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5c2018;
+  color: #f3e0dc;
+  font-size: 1.3rem;
+  padding: 15px;
+
+  &__author {
+    width: 300px;
+  }
+
+  &__technology {
+    font-size: 1.1rem;
+  }
+}
