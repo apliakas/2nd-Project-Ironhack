@@ -15,18 +15,11 @@
     "hbs": "^4.1.1",
     "mongoose": "^5.10.14",
     "morgan": "^1.10.0",
-<<<<<<< Updated upstream
     "node-fetch": "^2.6.1",
-=======
->>>>>>> Stashed changes
     "nodemon": "^2.0.6"
   },
   "devDependencies": {},
   "scripts": {
-<<<<<<< Updated upstream
-=======
-    "test": "echo \"Error: no test specified\" && exit 1",
->>>>>>> Stashed changes
     "dev": "nodemon /app.js"
   },
   "repository": {
