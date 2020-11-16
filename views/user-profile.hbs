@@ -1,15 +1,20 @@
 <h1>Testing user profile page</h1>
 {{#if userInSession}}
 <p>Welcome {{userInSession.firstName}}</p>
-<div>
-    <h2>Your favorite Dutch artist is: {{userInSession.favArtist}}</h2>
+<div class="create-project">
+    <h2>Create a new project</h2>
+    <a href="/create">New project board</a>
 </div>
-{{#each userInSession.favArtistInfo}}
-<figure class="artwork-container">
-    <img class="artwork" src="{{this.[1]}}" alt="{{this.[0]}}">
-    <figcaption>{{this.[0]}}</figcaption>
-</figure>
+<div class="inspiration-from-api">
+    <h2>Need some inspiration? Some examples from your favorite artist, {{userInSession.favArtist}}, below:</h2>
+    {{#each userInSession.favArtistInfo}}
+    <figure class="artwork-container">
+        <img class="artwork" src="{{this.[1]}}" alt="{{this.[0]}}">
+        <figcaption>{{this.[0]}}</figcaption>
+    </figure>
+</div>
 {{/each}}
+
 {{else}}
 <>Please log in!</>
 <a href=" /login">Login Page</a>

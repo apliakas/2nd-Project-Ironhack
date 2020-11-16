@@ -2,37 +2,112 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
-.signup-form-container {
-  max-width: 50vw;
+
+.footer {
+  display: flex;
+  justify-content: center;
+	align-items: center;
+  width: 100%;
+  height: 10vh;
+  background-color: #5C2018;
+  color: #F3E0DC;
+  font-size: 0.8em;
+}
+
+.footer li {
+  font-size: 0.8em;
+}
+
+.footertext {
+  width: 300px;
+}
+
+.background {
+  background-image: url('../image/SK-C-5.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+	align-items: center;
+}
+
+.login-container, .signup-container {
+  margin: 20vh auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  
+}
+
+.login-form {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 3vh 5vw 5vh 5vw;
+  width: 25vw;
+  height: 25vh;
 }
 
 .signup-form {
-  display: flex;
+  display:flex;
   flex-direction: column;
-}
-.signup-form input {
-  margin-bottom: 1rem;
-  padding: 0.3rem;
-}
-.submit-button {
-  padding: 1rem 0rem;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 3vh 5vw 5vh 5vw;
+  width: 30vw;
+  height: 50vh;
 }
 
-.homepage-links {
-  display: flex;
-  flex-direction: column;
+.login-button {
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px;
+  margin-top: 10px;
+  background-color: #BC4639;
+  color: #F3E0DC;
+  border: none;
 }
-.login-container {
-  max-width: 50vw;
+
+.login-button:hover {
+  background-color: #F3E0DC;
+  color: #BC4639;
+  border: 1px solid #BC4639;
 }
-.login-container form {
-  display: flex;
-  flex-direction: column;
+
+.login-input {
+  width: 100%;
+  height: 25px;
 }
-.login-container input {
-  margin-bottom: 1rem;
-  padding: 0.3rem;
+
+.links {
+  font-size: 1.3rem;
+  padding: 10px;
+  align-self: center;
+  text-align: end;
+}
+
+.links a{
+  text-decoration: none;
+  color: #5C2018;
+}
+
+.login-link {
+  padding: 5px;
+  border-right: 3px solid #5C2018;
+}
+
+.signup-form input {
+  width: 100%;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.signup-form select {
+  width: 100%;
+  text-align: center;
 }
 .artwork {
   max-width: 200px;

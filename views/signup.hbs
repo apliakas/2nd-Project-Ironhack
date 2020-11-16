@@ -1,30 +1,39 @@
-<div class="signup-form-container">
-    <form action="/signup" method="POST" class="signup-form" id="signupform">
-        <label for="firstName">First Name: </label>
-        <input type="text" name="firstName" id="firstName" required>
-        <label for="lastName">Last Name: </label>
-        <input type="text" name="lastName" id="lastName" required>
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username" required>
-        <label for="email">Email address: </label>
-        <input type="email" id="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$">
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password" required>
-        <label for="favArtist">Choose your favorite Dutch artist: </label>
-        <select name="favArtist" id="favArtist" form="signupform">
-            <option name="favArtist" value="Bartholomeus van der Helst">Bartholomeus van der Helst
-            </option>
-            <option name="favArtist" value="Jan Asselijn">Jan Asselijn</option>
-            <option name="favArtist" value="Judith Leyster">Judith Leyster</option>
-            <option name="favArtist" value="Johannes Vermeer">Johannes Vermeer</option>
-            <option name="favArtist" value="Rembrandt van Rijn">Rembrandt van Rijn</option>
-            <option name="favArtist" value="Frans Hals">Frans Hals</option>
-            <option name="favArtist" value="Magdalena van de Passe">Magdalena van de Passe</option>
-            <option name="favArtist" value="Vincent van Gogh">Vincent van Gogh</option>
-            <option name="favArtist" value="Jan Havicksz. Steen">Jan Steen</option>
-            <option name="favArtist" value="Jheronimus Bosch">Hieronymus (Jheronimus) Bosch</option>
-            <option name="favArtist" value="Pieter Claesz.">Pieter Claesz</option>
-        </select>
-        <button class="submit-button" type="submit">Submit</button>
-    </form>
+<div class="background">
+
+    <div class="signup-container">
+        <div class="links">
+            <a href="/login" class="login-link">Log In</a>
+            <a><strong>Sign Up</strong></a>
+        </div>
+
+        <form class="signup-form" action="/signup" method="POST" class="signup-form" id="signupform">
+
+            <label for="firstName">First Name: </label>
+            <input type="text" name="firstName" id="firstName" required>
+            <label for="lastName">Last Name: </label>
+            <input type="text" name="lastName" id="lastName" required>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" required>
+            <label for="email">Email address: </label>
+            <input type="email" id="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$">
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required>
+            <label for="favArtist">Choose your favorite Dutch artist: </label>
+            <select name="favArtist" id="favArtist" form="signupform">
+                <option name="favArtist" id="favArtist" value="Johannes Vermeer">Johannes Vermeer</option>
+                <option name="favArtist" id="favArtist" value="Rembrandt van Rijn">Rembrandt van Rijn</option>
+                <option name="favArtist" id="favArtist" value="Frans Hals">Frans Hals</option>
+                <option name="favArtist" id="favArtist" value="Vincent van Gogh">Vincent van Gogh</option>
+                <option name="favArtist" id="favArtist" value="Adriaen van Ostade">Adriaen van Ostade</option>
+                <option name="favArtist" id="favArtist" value="Willem van de Velde (II)">Willem van de Velde (II)
+                </option>
+                <option name="favArtist" id="favArtist" value="Cornelis Troost">Cornelis Troost</option>
+
+            </select>
+            <button class="login-button" class="submit-button" type="submit">Submit</button>
+
+        </form>
+
+    </div>
+
 </div>
