@@ -1,12 +1,24 @@
-<div class="login-container">
-    <form action="/login" method="POST">
-        <label for="login-username">Enter your username: </label>
-        <input type="text" name="username" id="login-username">
-        <label for="login-password">Enter your password: </label>
-        <input type="password" name="password" id="login-password">
-        <button type="submit">Submit</button>
-    </form>
-    {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-    {{/if}}
+<div class="background">
+    <div class="login-container">
+        <div class="links">
+            <a class="login-link"><strong>Log In</strong></a>
+            <a href="/signup">Sign Up</a>
+        </div>
+
+        <form class="login-form" action="/login" method="POST">
+        
+            <label class="label-name" for="login-username">Name</label>
+            <input class="login-input" type="text" name="username" id="login-username" autocomplete="off">
+                            
+            <label class="label-name" for="login-password">Password</label>
+            <input class="login-input" type="password" name="password" id="login-password" autocomplete="off">
+
+            <button class="login-button" type="submit">Submit</button>
+
+        </form>
+        {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+        {{/if}}
+    </div>
 </div>
+
