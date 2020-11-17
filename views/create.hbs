@@ -1,5 +1,14 @@
+<h1>Your Museum @ Home Project Board</h1>
+<div class="project-board">
+    {{#each userInSession.projectBoard}}
+    <figure class="artwork">
+        <img class="artwork-img" src="{{this.image}}" alt="{{this.title}}">
+        <figcaption class="artwork-caption">{{this.title}}</figcaption>
+    </figure>
+    {{/each}}
+</div>
 <h2>Search the Rijksmuseum collections to add images to your project board</h2>
-<form action="/create" method="POST">
+<form action=" /create" method="POST">
     <label for="rijks-search">Search for any Dutch artist</label>
     <select name="artist" id="rijks-search">
         <option name="artist" value="Pieter Aertsen">Aertsen, Pieter</option>
@@ -135,12 +144,18 @@
 </form>
 {{#if userInSession.resultsArr}}
 <h2>Results from your artist, {{userInSession.artist}}, below:</h2>
-{{#each userInSession.resultsArr}}
 
-<figure class="artwork-container">
-    <img class="artwork" src="{{this.[0].webImage.url}}" alt="{{this.[0].longTitle}}">
-    <figcaption>{{this.[0].longTitle}}</figcaption>
-</figure>
-
-{{/each}}
+<div class="artwork-container">
+    {{#each userInSession.resultsArr}}
+    <figure class="artwork">
+        <img class="artwork-img" src="{{this.[0].webImage.url}}" alt="{{this.[0].longTitle}}">
+        <figcaption class="artwork-caption">{{this.[0].longTitle}}</figcaption>
+        <form action="/add-to-project-board" method="POST" id="projectBoardItem">
+            <input value="{{this.[0].webImage.url}}" name="projectBoardItemImage" type="hidden">
+            <input value="{{this.[0].longTitle}}" name="projectBoardItemTitle" type="hidden">
+            <button type="submit">Add {{this.[0].title}} to Project Board</button>
+        </form>
+    </figure>
+    {{/each}}
+</div>
 {{/if}}

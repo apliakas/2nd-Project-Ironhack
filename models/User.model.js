@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  projectBoard: {
+    type: Array,
+    default: [],
+  },
 });
 
 const User = mongoose.model("User", userSchema);

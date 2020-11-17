@@ -1,21 +1,56 @@
-<h1>Testing user profile page</h1>
-{{#if userInSession}}
-<p>Welcome {{userInSession.firstName}}</p>
-<div class="create-project">
-    <h2>Create a new project</h2>
-    <a href="/create">New project board</a>
-</div>
-<div class="inspiration-from-api">
+<div class="user">
+    {{#if userInSession}}
+    <nav class="user__nav">
+        <div class="title">
+            <h1 class="museum">Museum </h1>
+            <h4>at home</h2>
+        </div>
+        <div class="nav__menu">
+            <div class="dropdown">
+                <a class="dropdown-button" href="#">{{userInSession.firstName}}
+                <i class='fas fa-angle-down'></i>
+                </a>
+                <ul>
+                    <li><a href="#">Your profile</a></li>
+                    <li><a href="#">Your collections</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">Log out</a></li>
+                </ul> 
+            </div>
+            <div class="avatar"></div>
+        </div>
+        
+    </nav>
+    <main class="user__body">
+        <h2 class="user__body__title">Hi {{userInSession.firstName}}, need some inspiration? Some examples of your favourite artist {{userInSession.favArtist}} below:</h2>
+        <div class="user__body__artwork">
+            {{#each userInSession.favArtistInfo}}
+            <figure class="artwork">
+                <img class="artwork__img" src="{{this.[1]}}" alt="{{this.[0]}}">
+                <figcaption class="artwork__caption">{{this.[0]}}</figcaption>
+            </figure>
+            {{/each}}
+        </div>
+    </main>
+    <!--<div class="create-project">
+        <h2>Create a new project</h2>
+        <a href="/create">New project board</a>
+    </div>
     <h2>Need some inspiration? Some examples from your favorite artist, {{userInSession.favArtist}}, below:</h2>
-    {{#each userInSession.favArtistInfo}}
-    <figure class="artwork-container">
-        <img class="artwork" src="{{this.[1]}}" alt="{{this.[0]}}">
-        <figcaption>{{this.[0]}}</figcaption>
-    </figure>
-</div>
-{{/each}}
+    <div class="artwork-container">
+        {{#each userInSession.favArtistInfo}}
+        <figure class="artwork">
+            <img class="artwork-img" src="{{this.[1]}}" alt="{{this.[0]}}">
+            <figcaption class="artwork-caption">{{this.[0]}}</figcaption>
+            <p>Add to project board</p>
+        </figure>
+        {{/each}}
+    </div>
 
-{{else}}
-<>Please log in!</>
-<a href=" /login">Login Page</a>
-{{/if}}
+    {{else}}
+    <p>Please log in!</p>
+    <a href=" /login">Login Page</a>
+    {{/if}} -->
+    
+</div>
+

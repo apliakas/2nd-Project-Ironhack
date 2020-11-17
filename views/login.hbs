@@ -1,24 +1,23 @@
-<div class="background">
-    <div class="login-container">
+<div class="view--centered-with-image">
+    <div class="auth">
         <div class="links">
             <a class="login-link"><strong>Log In</strong></a>
             <a href="/signup">Sign Up</a>
         </div>
 
         <form class="login-form" action="/login" method="POST">
-        
+
             <label class="label-name" for="login-username">Name</label>
             <input class="login-input" type="text" name="username" id="login-username" autocomplete="off">
-                            
+
             <label class="label-name" for="login-password">Password</label>
             <input class="login-input" type="password" name="password" id="login-password" autocomplete="off">
 
-            <button class="login-button" type="submit">Submit</button>
+            <button class="submit-button" type="submit">Submit</button>
 
         </form>
         {{#if errorMessage}}
-        <p>{{errorMessage}}</p>
+        <p class="error">{{errorMessage}}</p>
         {{/if}}
     </div>
 </div>
-
