@@ -8,9 +8,15 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const axios = require("axios");
 const fetch = require("node-fetch");
+const util = require("util");
+const hbs = require("hbs");
+
+hbs.registerHelper("toJSON", function (object) {
+  return new hbs.SafeString(JSON.stringify(object));
+});
+
 let artArr = [];
 let resultsArr = [];
-let projectBoard = [];
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -102,7 +108,6 @@ router.post("/create", (req, res) => {
   if (req.session.user) {
     rijksFetchNewArtist(user);
     setTimeout(() => {
-      console.log(resultsArr);
       res.render("create", { userInSession: user });
     }, 500);
   } else {
@@ -110,11 +115,53 @@ router.post("/create", (req, res) => {
   }
 });
 
+router.get("/add-to-project-board", (req, res) => res.redirect("/login"));
+
 router.post("/add-to-project-board", (req, res) => {
   const user = req.session.user;
+  const { projectBoardItemImage, projectBoardItemTitle } = req.body;
   if (req.session.user) {
+    User.updateOne(
+      { _id: user._id },
+      {
+        $push: {
+          projectBoard: {
+            image: projectBoardItemImage,
+            title: projectBoardItemTitle,
+          },
+        },
+      }
+    )
+      .then(() => {
+        user.projectBoard.push({
+          image: projectBoardItemImage,
+          title: projectBoardItemTitle,
+        });
+        console.log(user.projectBoard);
+      })
+      .catch((err) => console.error(err));
+    setTimeout(() => {
+      res.render("create", { userInSession: user });
+    }, 500);
+  } else {
+    res.redirect("/login");
   }
 });
+
+// router.post("/add-to-project-board", (req, res) => {
+//   const user = req.session.user;
+//   const { projectBoard } = req.body;
+//   console.dir(projectBoard, { depth: null });
+//   if (req.session.user) {
+//     user.projectBoard.push(projectBoard);
+//     console.dir(user.projectBoard, { depth: null });
+//     setTimeout(() => {
+//       res.render("create", { userInSession: user });
+//     }, 500);
+//   } else {
+//     res.render("login");
+//   }
+// });
 
 const rijksFetchFavArtist = (user) => {
   artArr.splice(0, artArr.length);
@@ -136,7 +183,6 @@ const rijksFetchFavArtist = (user) => {
 
 const rijksFetchNewArtist = (user) => {
   resultsArr.splice(0, resultsArr.length);
-  console.log(`SECOND: ${user.artist}`);
   axios
     .get(
       `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${user.artist}&ps=20&imgOnly=true&type=painting`
