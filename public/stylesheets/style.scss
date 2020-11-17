@@ -1,3 +1,8 @@
+$navColor: #BC4639;
+$blueButtons: #659DBD;
+$redFooter:#5c2018;
+$whitetext: #f3e0dc;
+
 * {
   margin: 0;
   padding: 0;
@@ -46,12 +51,12 @@ ul {
 
     .login-link {
       padding: 5px;
-      border-right: 3px solid #5c2018;
+      border-right: 3px solid $redFooter;
     }
 
     a {
       text-decoration: none;
-      color: #5c2018;
+      color: $redFooter;
     }
   }
 
@@ -95,15 +100,15 @@ ul {
     text-align: center;
     padding: 5px 0px;
     margin-top: 10px;
-    background-color: #bc4639;
-    color: #f3e0dc;
+    background-color: $navColor;
+    color: $whitetext;
     border: none;
   }
 
   .submit-button:hover {
-    background-color: #f3e0dc;
-    color: #bc4639;
-    border: 1px solid #bc4639;
+    background-color: $whitetext;
+    color: $navColor;
+    border: 1px solid $navColor;
   }
 
   .error {
@@ -111,7 +116,7 @@ ul {
     background-color: rgb(156, 48, 48);
     padding: 15px 20px;
     margin: 20px 60px;
-    color: #f3e0dc;
+    color: $whitetext;
   }
 }
 
@@ -120,30 +125,29 @@ ul {
   grid-template-rows: 10vh auto;
 
   &__navigation {
-    background-color: #BC4639;
+    background-color: $navColor;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 90px;
     
     .title {
-      color: #f3e0dc;
+      color: $whitetext;
       font-size: 3rem;
-      text-align: center;
     }
 
     .links {
       text-decoration: none;
-      color:  #f3e0dc;
-      background-color: #4285F4;
+      color:  $whitetext;
+      background-color:$blueButtons;
       padding: 10px 15px;
       margin-left: 20px;
     }
 
     .links:hover {
-      background-color: #f3e0dc;
-      color: #4285F4;
-      border: 2px solid #4285F4;
+      background-color: $whitetext;
+      color: $blueButtons;
+      border: 2px solid $blueButtons;
     }
   }
 
@@ -155,12 +159,145 @@ ul {
   }
 }
 
+.user {
+  display: grid;
+  grid-template-rows: 10vh auto;
+
+  &__nav {
+    background-color: $navColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+
+    .title {
+      color: $whitetext;
+      font-size: 3rem;
+    }
+
+    .nav__menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .dropdown {
+        position: relative;
+
+        ul {
+          position: absolute;
+          background: $navColor;
+          width: 244px;
+          height: 300px;
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-start;
+          flex-direction: column;
+          opacity: 0;
+          pointer-events: none;
+          transform: translateY(25px);
+          transition: all 0.3s ease;
+
+          li {
+            height: 100%;
+            width: 100%;
+            padding-top: 25px;
+            padding-left: 40px;
+          }
+          
+          li:hover {
+            background-color: #D4A59A;
+            color: $navColor;
+          }
+
+          a{
+            color: $whitetext;
+            text-decoration: none;
+          }
+
+          a:hover{
+            color: $navColor;
+          }
+          
+        
+        }
+
+        .dropdown-button {
+          text-decoration: none;
+          color: $whitetext;
+        }
+
+        .dropdown-button:focus + ul{
+          opacity: 1;
+          pointer-events: all;
+        }
+    
+        .fas {
+          padding-left: 15px;
+        }
+      }
+  
+      
+      
+      .avatar {
+        background-image: url('../image/profile-pic-test.png');
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background-size: cover;
+        margin: 10px 15px;
+      }
+    }
+  }
+
+  &__body {
+    padding: 30px 100px;
+    background-color: $whitetext;
+
+    &__title {
+      text-align: center;
+      
+    }
+
+    &__artwork {
+      padding: 100px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-content: space-between;
+      
+      .artwork {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+	      align-items: center;
+        padding: 40px;
+
+        &__img {
+          max-width: 550px;
+          max-height: 550px;
+          border-radius: 5px;
+        }
+
+        &__caption {
+          padding-top: 20px;
+          text-align: center;
+          max-width: 400px;
+        }
+      }
+    }
+  }
+
+}
+
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #5c2018;
-  color: #f3e0dc;
+  background-color: $redFooter;
+  color: $whitetext;
   font-size: 1.3rem;
   padding: 15px;
 
