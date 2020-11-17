@@ -130,6 +130,8 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 20px 90px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.53);
+    z-index: 2;
     
     .title {
       color: $whitetext;
@@ -169,6 +171,8 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 10px 90px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.20), 0 0 6px rgba(0,0,0,0.90);
+    z-index: 2;
 
     .title {
       color: $whitetext;
@@ -179,8 +183,15 @@ ul {
       display: flex;
       justify-content: center;
       align-items: center;
+      
 
-      .dropdown {
+      &__collection {
+        padding-right: 40px;
+        text-decoration: none;
+        color: $whitetext;
+      }
+
+      &__dropdown {
         position: relative;
 
         ul {
@@ -196,6 +207,7 @@ ul {
           pointer-events: none;
           transform: translateY(25px);
           transition: all 0.3s ease;
+          z-index: 2;
 
           li {
             height: 100%;
@@ -221,12 +233,12 @@ ul {
         
         }
 
-        .dropdown-button {
+        &__button {
           text-decoration: none;
           color: $whitetext;
         }
 
-        .dropdown-button:focus + ul{
+        &__button:focus + ul{
           opacity: 1;
           pointer-events: all;
         }
@@ -250,16 +262,30 @@ ul {
   }
 
   &__body {
-    padding: 30px 100px;
     background-color: $whitetext;
+    display: grid;
+    grid-template-columns: 14vw auto 14vw;
+
+    &__left {
+      background-image: url('../image/pic-side-left.png');
+      background-size: cover;
+      opacity: 0.5;
+    }
+
+    &__right {
+      background-image: url('../image/pic-side-right.png');
+      background-size: cover;
+      z-index: 1;
+      opacity: 0.5;
+    
+    }
 
     &__title {
       text-align: center;
-      
+      padding: 40px 0px;
     }
 
     &__artwork {
-      padding: 100px;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -290,6 +316,107 @@ ul {
     }
   }
 
+}
+
+.create {
+  display: grid;
+  grid-template-rows: 10vh auto;
+
+  &__nav {
+    background-color: $navColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.20), 0 0 6px rgba(0,0,0,0.90);
+    z-index: 2;
+
+    .title {
+      color: $whitetext;
+      font-size: 3rem;
+    }
+
+    .nav__menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+
+      &__collection {
+        padding-right: 40px;
+        text-decoration: none;
+        color: $whitetext;
+      }
+
+      &__dropdown {
+        position: relative;
+
+        ul {
+          position: absolute;
+          background: $navColor;
+          width: 244px;
+          height: 300px;
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-start;
+          flex-direction: column;
+          opacity: 0;
+          pointer-events: none;
+          transform: translateY(25px);
+          transition: all 0.3s ease;
+          z-index: 2;
+
+          li {
+            height: 100%;
+            width: 100%;
+            padding-top: 25px;
+            padding-left: 40px;
+          }
+          
+          li:hover {
+            background-color: #D4A59A;
+            color: $navColor;
+          }
+
+          a{
+            color: $whitetext;
+            text-decoration: none;
+          }
+
+          a:hover{
+            color: $navColor;
+          }
+          
+        
+        }
+
+        &__button {
+          text-decoration: none;
+          color: $whitetext;
+        }
+
+        &__button:focus + ul{
+          opacity: 1;
+          pointer-events: all;
+        }
+    
+        .fas {
+          padding-left: 15px;
+        }
+      }
+  
+      
+      
+      .avatar {
+        background-image: url('../image/profile-pic-test.png');
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background-size: cover;
+        margin: 10px 15px;
+      }
+    }
+  }
 }
 
 .footer {
