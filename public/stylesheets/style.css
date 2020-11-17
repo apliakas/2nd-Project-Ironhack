@@ -140,6 +140,54 @@ ul {
   color: #f3e0dc;
 }
 
+.homepage {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 10vh auto;
+      grid-template-rows: 10vh auto;
+}
+
+.homepage__navigation {
+  background-color: #BC4639;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 90px;
+}
+
+.homepage__navigation .title {
+  color: #f3e0dc;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.homepage__navigation .links {
+  text-decoration: none;
+  color: #f3e0dc;
+  background-color: #4285F4;
+  padding: 10px 15px;
+  margin-left: 20px;
+}
+
+.homepage__navigation .links:hover {
+  background-color: #f3e0dc;
+  color: #4285F4;
+  border: 2px solid #4285F4;
+}
+
+.homepage__body {
+  background-image: url("../image/collage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .footer {
   display: -webkit-box;
   display: -ms-flexbox;
