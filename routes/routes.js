@@ -9,8 +9,8 @@ const session = require("express-session");
 const axios = require("axios");
 const fetch = require("node-fetch");
 let artArr = [];
-let projectBoard = [];
 let resultsArr = [];
+let projectBoard = [];
 
 router.get("/", (req, res) => {
   res.render("index", {
@@ -98,7 +98,6 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
   const user = req.session.user;
-  console.log(req.body);
   user.artist = req.body.artist;
   if (req.session.user) {
     rijksFetchNewArtist(user);
@@ -108,6 +107,12 @@ router.post("/create", (req, res) => {
     }, 500);
   } else {
     res.redirect("/login");
+  }
+});
+
+router.post("/add-to-project-board", (req, res) => {
+  const user = req.session.user;
+  if (req.session.user) {
   }
 });
 

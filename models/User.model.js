@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  projectBoard: [],
 });
 
 const User = mongoose.model("User", userSchema);

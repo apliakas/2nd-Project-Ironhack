@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: sans-serif;
 }
 
@@ -16,8 +16,8 @@ body {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: auto min-content;
-      grid-template-rows: auto -webkit-min-content;
-      grid-template-rows: auto min-content;
+  grid-template-rows: auto -webkit-min-content;
+  grid-template-rows: auto min-content;
   font-size: 1.6rem;
 }
 
@@ -34,11 +34,11 @@ ul {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .auth {
@@ -70,13 +70,13 @@ ul {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   padding: 36px;
   width: 400px;
 }
@@ -93,13 +93,13 @@ ul {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   padding: 36px;
   width: 400px;
   min-width: 200px;
@@ -193,11 +193,11 @@ ul {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: #5c2018;
   color: #f3e0dc;
   font-size: 1.3rem;
@@ -212,3 +212,37 @@ ul {
   font-size: 1.1rem;
 }
 /*# sourceMappingURL=style.css.map */
+.project-board {
+  height: 35vh;
+  width: 90vw;
+  display: grid;
+  background-color: darkgray;
+  margin: auto;
+}
+.artwork-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 90vw;
+  background-color: green;
+  flex-wrap: wrap;
+}
+.artwork {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  background-color: lightcoral;
+  justify-content: center;
+}
+.artwork-img {
+  max-width: 20vw;
+  max-height: 16vh;
+  object-fit: cover;
+}
+.artwork-caption {
+  max-width: 20vw;
+  background-color: lightblue;
+}

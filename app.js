@@ -8,6 +8,10 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+// const jsdom = require("jsdom");
+// const { JSDOM } = jsdom;
+// const { window } = new JSDOM(`...`);
+
 const app = express();
 
 require("./routes/routes.js");
@@ -28,5 +32,11 @@ app.use("/", require("./routes/routes"));
 app.listen(process.env.PORT, () =>
   console.log(`App running on port ${process.env.PORT}`)
 );
+
+// const artworkCard = window.document.querySelector(".artwork");
+// console.log(artworkCard);
+// artworkCard.addEventListener("click", function () {
+//   projectBoard.push(artworkCard);
+// });
 
 module.exports = app;
