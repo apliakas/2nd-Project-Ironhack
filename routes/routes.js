@@ -182,6 +182,7 @@ router.post("/addSearch", (req, res) => {
         .then((result) => {
           user.collections = result.collections;
           res.render("search", { userInSession: user });
+
         })
         .catch((err) => console.error(err));
     });
