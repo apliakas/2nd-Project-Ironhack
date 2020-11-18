@@ -37,9 +37,15 @@
         </div>
         <h2>Search Rijksmuseum artists to add works to your Collection</h2>
         <form action=" /create" method="POST">
-            <label for="rijks-search">Search for any Dutch artist</label>
+            <label for="rijks-search">Search for any Dutch artist: </label>
             <select name="artist" id="rijks-search">
+                {{#if userInSession.artist}}
+                <option name="artist" value="{{userInSession.artist}}" selected="selected">{{userInSession.artist}}
+                </option>
                 <option name="artist" value="Pieter Aertsen">Aertsen, Pieter</option>
+                {{else}}
+                <option name="artist" value="Pieter Aertsen">Aertsen, Pieter</option>
+                {{/if}}
                 <option name="artist" value="Lourens Alma Tadema">
                     Alma Tadema, Lawrence
                 </option>
