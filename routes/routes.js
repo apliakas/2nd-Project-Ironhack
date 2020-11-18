@@ -171,6 +171,11 @@ router.post("/delete", (req, res) => {
   }
 });
 
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
+
 const rijksFetchFavArtist = (user) => {
   artArr.splice(0, artArr.length);
   const { favArtist } = user;
