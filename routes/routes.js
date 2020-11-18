@@ -71,6 +71,17 @@ router.get("/user-profile", (req, res) => {
   }
 });
 
+router.post("/profile-photo", (req, res) => {
+  const user = req.session.user;
+  const { profilePhoto } = req.body;
+  User.findOneAndUpdate({ _id: user._id }, { profilePhoto: profilePhoto })
+    .then((result) => {
+      user.profilePhoto = profilePhoto;
+      res.redirect("/user-profile");
+    })
+    .catch((err) => console.error(err));
+});
+
 router.get("/login", (req, res) => res.render("login"));
 
 router.post("/login", (req, res) => {
@@ -109,59 +120,100 @@ router.post("/create", (req, res) => {
     rijksFetchNewArtist(user);
     setTimeout(() => {
       res.render("create", { userInSession: user });
-    }, 500);
+    }, 1000);
   } else {
     res.redirect("/login");
   }
 });
 
-router.get("/add-to-project-board", (req, res) => res.redirect("/login"));
-
-router.post("/add-to-project-board", (req, res) => {
+router.post("/add", (req, res) => {
   const user = req.session.user;
-  const { projectBoardItemImage, projectBoardItemTitle } = req.body;
+  const { collectionItemImage, collectionItemTitle } = req.body;
   if (req.session.user) {
     User.updateOne(
       { _id: user._id },
       {
         $push: {
-          projectBoard: {
-            image: projectBoardItemImage,
-            title: projectBoardItemTitle,
+          collections: {
+            image: collectionItemImage,
+            title: collectionItemTitle,
           },
         },
       }
-    )
-      .then(() => {
-        user.projectBoard.push({
-          image: projectBoardItemImage,
-          title: projectBoardItemTitle,
-        });
-        console.log(user.projectBoard);
-      })
-      .catch((err) => console.error(err));
-    setTimeout(() => {
-      res.render("create", { userInSession: user });
-    }, 500);
+    ).then(() => {
+      User.findOne({ _id: user._id })
+        .then((result) => {
+          user.collections = result.collections;
+          res.render("create", { userInSession: user });
+        })
+        .catch((err) => console.error(err));
+    });
   } else {
     res.redirect("/login");
   }
 });
 
-// router.post("/add-to-project-board", (req, res) => {
-//   const user = req.session.user;
-//   const { projectBoard } = req.body;
-//   console.dir(projectBoard, { depth: null });
-//   if (req.session.user) {
-//     user.projectBoard.push(projectBoard);
-//     console.dir(user.projectBoard, { depth: null });
-//     setTimeout(() => {
-//       res.render("create", { userInSession: user });
-//     }, 500);
-//   } else {
-//     res.render("login");
-//   }
-// });
+router.post("/delete", (req, res) => {
+  const user = req.session.user;
+  const { collectionItemImage, collectionItemTitle } = req.body;
+  if (req.session.user) {
+    User.updateOne(
+      { _id: user._id },
+      {
+        $pull: {
+          collections: {
+            image: collectionItemImage,
+            title: collectionItemTitle,
+          },
+        },
+      }
+    ).then(() => {
+      User.findOne({ _id: user._id })
+        .then((result) => {
+          user.collections = result.collections;
+          res.render("create", { userInSession: user });
+        })
+        .catch((err) => console.error(err));
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.get("/generate-link", (req, res) => {
+  const user = req.session.user;
+  const publicLink = user._id;
+  if (req.session.user) {
+    User.findOneAndUpdate({ _id: user._id }, { publicLink: publicLink })
+      .then((result) => {
+        user.publicLink = publicLink;
+      })
+      .then(() => {
+        res.render("create", { userInSession: user });
+      })
+      .catch((err) => console.error(err));
+  } else {
+    res.redirect("/");
+  }
+});
+
+router.get("/collections/:publicLink", (req, res) => {
+  const userId = req.params.publicLink;
+  let publicCollection = [];
+  User.findOne({ _id: userId })
+    .then((result) => {
+      publicCollection = result.collections;
+    })
+    .then(() => {
+      res.render("public-collection", { publicCollection: publicCollection });
+    })
+    .catch((err) => console.error(err));
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
 
 const rijksFetchFavArtist = (user) => {
   artArr.splice(0, artArr.length);

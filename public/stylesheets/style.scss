@@ -1,6 +1,6 @@
-$navColor: #BC4639;
-$blueButtons: #659DBD;
-$redFooter:#5c2018;
+$navColor: #bc4639;
+$blueButtons: #659dbd;
+$redFooter: #5c2018;
 $whitetext: #f3e0dc;
 
 * {
@@ -44,12 +44,12 @@ ul {
   border-radius: 2px;
   padding: 18px;
 
-  .links {
+  &__links {
     font-size: 1.8rem;
     margin-bottom: 18px;
     text-align: end;
 
-    .login-link {
+    &__sign {
       padding: 5px;
       border-right: 3px solid $redFooter;
     }
@@ -60,7 +60,7 @@ ul {
     }
   }
 
-  .login-form {
+  &__login-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -75,7 +75,7 @@ ul {
     }
   }
 
-  .signup-form {
+  &__signup-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -124,24 +124,27 @@ ul {
   display: grid;
   grid-template-rows: 10vh auto;
 
-  &__navigation {
+  &__nav {
     background-color: $navColor;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 90px;
-    
-    .title {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.53);
+    z-index: 2;
+
+    &__title {
       color: $whitetext;
       font-size: 3rem;
     }
 
     .links {
       text-decoration: none;
-      color:  $whitetext;
-      background-color:$blueButtons;
+      color: $whitetext;
+      background-color: $blueButtons;
       padding: 10px 15px;
       margin-left: 20px;
+      border: 2px solid $blueButtons;
     }
 
     .links:hover {
@@ -169,8 +172,10 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 10px 90px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.9);
+    z-index: 2;
 
-    .title {
+    &__title {
       color: $whitetext;
       font-size: 3rem;
     }
@@ -180,66 +185,71 @@ ul {
       justify-content: center;
       align-items: center;
 
-      .dropdown {
+      &__collection {
+        padding-right: 40px;
+        text-decoration: none;
+        color: $whitetext;
+      }
+
+      &__dropdown {
         position: relative;
+
+        &:hover {
+          ul {
+            display: block;
+          }
+        }
 
         ul {
           position: absolute;
+          right: -100px;
           background: $navColor;
-          width: 244px;
-          height: 300px;
-          display: flex;
           justify-content: space-around;
           align-items: flex-start;
           flex-direction: column;
-          opacity: 0;
-          pointer-events: none;
+          display: none;
           transform: translateY(25px);
           transition: all 0.3s ease;
+          z-index: 2;
 
           li {
-            height: 100%;
-            width: 100%;
-            padding-top: 25px;
-            padding-left: 40px;
+            display: block;
+
+            a {
+              padding: 20px 40px;
+              display: block;
+              width: 200px;
+            }
           }
-          
+
           li:hover {
-            background-color: #D4A59A;
+            background-color: #d4a59a;
             color: $navColor;
           }
 
-          a{
+          a {
             color: $whitetext;
             text-decoration: none;
           }
 
-          a:hover{
+          a:hover {
             color: $navColor;
           }
-          
-        
         }
 
-        .dropdown-button {
+        &__button {
           text-decoration: none;
           color: $whitetext;
+          padding: 40px 20px;
         }
 
-        .dropdown-button:focus + ul{
-          opacity: 1;
-          pointer-events: all;
-        }
-    
         .fas {
           padding-left: 15px;
         }
       }
-  
-      
-      
+
       .avatar {
-        background-image: url('../image/profile-pic-test.png');
+        background-image: url("../image/profile-pic-test.png");
         width: 65px;
         height: 65px;
         border-radius: 50%;
@@ -250,16 +260,63 @@ ul {
   }
 
   &__body {
-    padding: 30px 100px;
     background-color: $whitetext;
+    display: grid;
+    grid-template-columns: 14vw auto 14vw;
+
+    &__left {
+      background-image: url("../image/pic-side-left.png");
+      background-size: cover;
+      opacity: 0.5;
+    }
+
+    &__right {
+      background-image: url("../image/pic-side-right.png");
+      background-size: cover;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    &__profile-pic {
+      padding: 20px 10px;
+      text-align: center;
+      
+      .profile-photo {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        &__card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 15px;
+
+          img{
+            width: 150px;
+            height: 150px;
+
+          }
+          form {
+            display: none;
+          }
+          
+        }
+        &__card:hover form{
+          display: block;
+        }
+      }
+    }
 
     &__title {
       text-align: center;
-      
+      padding: 40px 0px;
     }
 
     &__artwork {
-      padding: 100px;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -267,12 +324,12 @@ ul {
       justify-content: center;
       align-items: center;
       align-content: space-between;
-      
+
       .artwork {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-	      align-items: center;
+        align-items: center;
         padding: 40px;
 
         &__img {
@@ -289,9 +346,105 @@ ul {
       }
     }
   }
-
 }
 
+.create {
+  display: grid;
+  grid-template-rows: 10vh auto;
+
+  &__nav {
+    background-color: $navColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+
+    &__title {
+      color: $whitetext;
+      font-size: 3rem;
+    }
+
+    .nav__menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__collection {
+        padding-right: 40px;
+        text-decoration: none;
+        color: $whitetext;
+      }
+
+      &__dropdown {
+        position: relative;
+
+        &:hover {
+          ul {
+            display: block;
+          }
+        }
+
+        ul {
+          position: absolute;
+          right: -100px;
+          background: $navColor;
+          justify-content: space-around;
+          align-items: flex-start;
+          flex-direction: column;
+          display: none;
+          transform: translateY(25px);
+          transition: all 0.3s ease;
+          z-index: 2;
+
+          li {
+            display: block;
+
+            a {
+              padding: 20px 40px;
+              display: block;
+              width: 200px;
+            }
+          }
+
+          li:hover {
+            background-color: #d4a59a;
+            color: $navColor;
+          }
+
+          a {
+            color: $whitetext;
+            text-decoration: none;
+          }
+
+          a:hover {
+            color: $navColor;
+          }
+        }
+
+        &__button {
+          text-decoration: none;
+          color: $whitetext;
+          padding: 40px 20px;
+        }
+
+        .fas {
+          padding-left: 15px;
+        }
+      }
+
+      .avatar {
+        background-image: url("../image/profile-pic-test.png");
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background-size: cover;
+        margin: 10px 15px;
+      }
+    }
+  }
+}
 .footer {
   display: flex;
   justify-content: center;

@@ -1,12 +1,12 @@
 <div class="view--centered-with-image">
 
     <div class="auth">
-        <div class="links">
-            <a href="/login" class="login-link">Log In</a>
+        <div class="auth__links">
+            <a href="/login" class="auth__links__sign">Log In</a>
             <a><strong>Sign Up</strong></a>
         </div>
 
-        <form class="signup-form" action="/signup" method="POST" id="signupform">
+        <form class="auth__signup-form" action="/signup" method="POST" id="signupform">
             <label for="firstName">First Name: </label>
             <input type="text" name="firstName" id="firstName" required>
             <label for="lastName">Last Name: </label>
@@ -17,16 +17,136 @@
             <input type="email" id="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$">
             <label for="password">Password: </label>
             <input type="password" name="password" id="password" required>
-            <label for="favArtist">Choose your favorite Dutch artist: </label>
-            <select name="favArtist" id="favArtist" form="signupform">
-                <option name="favArtist" id="favArtist" value="Johannes Vermeer">Johannes Vermeer</option>
-                <option name="favArtist" id="favArtist" value="Rembrandt van Rijn">Rembrandt van Rijn</option>
-                <option name="favArtist" id="favArtist" value="Frans Hals">Frans Hals</option>
-                <option name="favArtist" id="favArtist" value="Vincent van Gogh">Vincent van Gogh</option>
-                <option name="favArtist" id="favArtist" value="Adriaen van Ostade">Adriaen van Ostade</option>
-                <option name="favArtist" id="favArtist" value="Willem van de Velde (II)">Willem van de Velde (II)
+            <label for="favArtist">Choose your favorite Dutch favArtist: </label>
+            <select name="favArtist" id="favfavArtist" form="signupform">
+                <option name="favArtist" value="Pieter Aertsen">Aertsen, Pieter</option>
+                <option name="favArtist" value="Lourens Alma Tadema">
+                    Alma Tadema, Lawrence
                 </option>
-                <option name="favArtist" id="favArtist" value="Cornelis Troost">Cornelis Troost</option>
+                <option name="favArtist" value="Hendrick Avercamp">Avercamp, Hendrick</option>
+                <option name="favArtist" value="Dirck van Baburen">Baburen, Dirck van</option>
+                <option name="favArtist" value="Ludolf Bakhuysen">Bakhuysen, Ludolf</option>
+                <option name="favArtist" value="Nicolaes Pietersz. Berchem">
+                    Berchem, Nicolaes Pietersz.
+                </option>
+                <option name="favArtist" value="Gerrit Adriaensz. Berckheyde">
+                    Berckheyde, Gerrit Adriaensz.
+                </option>
+                <option name="favArtist" value="Joachim Bueckelaer">Bueckelaer, Joachim</option>
+                <option name="favArtist" value="Albert Gerard Bilders">
+                    Bilders, Albert Gerard
+                </option>
+                <option name="favArtist" value="Abraham Bloemaert">Bloemaert, Abraham</option>
+                <option name="favArtist" value="Ferdinand Bol">Bol, Ferdinand</option>
+                <option name="favArtist" value="Gerard ter Borch (II)">Borch (II), Gerard ter</option>
+                <option name="favArtist" value="Jan Both">Both, Jan</option>
+                <option name="favArtist" value="George Hendrik Breitner">
+                    Breitner, George Hendrik
+                </option>
+                <option name="favArtist" value="Hendrick ter Brugghen">
+                    Brugghen, Hendrick ter
+                </option>
+                <option name="favArtist" value="Willem Pietersz. Buytewech">
+                    Buytewech, Willem Pietersz.
+                </option>
+                <option name="favArtist" value="Pieter Claesz.">Claesz., Pieter</option>
+                <option name="favArtist" value="Adriaen Coorte">Coorte, Adriaen</option>
+                <option name="favArtist" value="Cornelis Cornelisz. van Haarlem">
+                    Cornelisz. van Haarlem, Cornelis
+                </option>
+                <option name="favArtist" value="Jacob Cornelisz. van Oostsanen">
+                    Cornelisz. van Oostsanen, Jacob
+                </option>
+                <option name="favArtist" value="Aelbert Cuyp">Cuyp, Aelbert</option>
+                <option name="favArtist" value="Gerard Dou">Dou, Gerard</option>
+                <option name="favArtist" value="Karel du Jardin">du Jardin, Karel</option>
+                <option name="favArtist" value="Anthony van Dyck">Dyck, Anthony van</option>
+                <option name="favArtist" value="Govert Flinck">Flinck, Govert</option>
+                <option name="favArtist" value="Geertgen tot Sint Jans">
+                    Geertgen tot Sint Jans
+                </option>
+                <option name="favArtist" value="Jacob de Gheyn (II)">Gheyn (II), Jacob de</option>
+                <option name="favArtist" value="Vincent van Gogh">Gogh, Vincent van</option>
+                <option name="favArtist" value="Dirck Hals">Hals, Dirck</option>
+                <option name="favArtist" value="Frans Hals">Hals, Frans</option>
+                <option name="favArtist" value="Willem Claesz. Heda">Heda, Willem Claesz.</option>
+                <option name="favArtist" value="Jan Davidsz. de Heem">
+                    Heem, Jan Davidsz. de
+                </option>
+                <option name="favArtist" value="Maarten van Heemskerck">
+                    Heemskerck, Maarten van
+                </option>
+                <option name="favArtist" value="Bartholomeus van der Helst">
+                    Helst, Bartholomeus van der
+                </option>
+                <option name="favArtist" value="Gerard van Honthorst">
+                    Honthorst, Gerard van
+                </option>
+                <option name="favArtist" value="Pieter de Hooch">Hooch, Pieter de</option>
+                <option name="favArtist" value="Isaac Israels">Israels, Isaac</option>
+                <option name="favArtist" value="Jacob Jordaens (I)">Jordaens (I), Jacob</option>
+                <option name="favArtist" value="Adriaen Thomasz. Key">
+                    Key, Adriaen Thomasz.
+                </option>
+                <option name="favArtist" value="Philips Koninck">Koninck, Philips</option>
+                <option name="favArtist" value="Willem Bartel van der Kooi">
+                    Kooi, Willem Bartel van der
+                </option>
+                <option name="favArtist" value="Jan Adam Kruseman">Kruseman, Jan Adam</option>
+                <option name="favArtist" value="Gerard de Lairesse">Lairesse, Gerard de</option>
+                <option name="favArtist" value="Pieter Lastman">Lastman, Pieter</option>
+                <option name="favArtist" value="Adriaan de Lelie">Lelie, Adriaan de</option>
+                <option name="favArtist" value="Jan Lievens">Lievens, Jan</option>
+                <option name="favArtist" value="Jean-Etienne Liotard">
+                    Liotard, Jean-Etienne
+                </option>
+                <option name="favArtist" value="Nicolaes Maes">Maes, Nicolaes</option>
+                <option name="favArtist" value="Karel van Mander (I)">Mander (I), Karel van</option>
+                <option name="favArtist" value="Anton Mauve">Mauve, Anton</option>
+                <option name="favArtist" value="Meester van Alkmaar">Meester van Alkmaar</option>
+                <option name="favArtist" value="Hendrik Willem Mesdag">Mesdag, Hendrik Willem</option>
+                <option name="favArtist" value="Michiel Jansz. van Mierevelt">
+                    Mierevelt, Michiel Jansz. van
+                </option>
+                <option name="favArtist" value="Abraham Mignon">Mignon, Abraham</option>
+                <option name="favArtist" value="Adriaen van Ostade">Ostade, Adriaen van</option>
+                <option name="favArtist" value="Jan Willem Pieneman">Pieneman, Jan Willem</option>
+                <option name="favArtist" value="Nicolaas Pieneman">Pieneman, Nicolaas</option>
+                <option name="favArtist" value="Frans Jansz. Post">Post, Frans Jansz.</option>
+                <option name="favArtist" value="Paulus Potter">Potter, Paulus</option>
+                <option name="favArtist" value="Rembrandt van Rijn">Rembrandt</option>
+                <option name="favArtist" value="Rembrandt van Rijn">Rijn, Rembrandt van</option>
+                <option name="favArtist" value="Peter Paul Rubens">Rubens, Peter Paul</option>
+                <option name="favArtist" value="Jacob Isaacksz van Ruisdael">
+                    Ruisdael, Jacob Isaacksz. van
+                </option>
+                <option name="favArtist" value="Salomon van Ruysdael">
+                    Ruysdael, Salomon van
+                </option>
+                <option name="favArtist" value="Pieter Jansz. Saenredam">
+                    Saenredam, Pieter Jansz.
+                </option>
+                <option name="favArtist" value="Roelant Savery">Savery, Roelant</option>
+                <option name="favArtist" value="Jan van Scorel">Scorel, Jan van</option>
+                <option name="favArtist" value="Hercules Segers">Segers, Hercules</option>
+                <option name="favArtist" value="Jan Havicksz. Steen">Steen, Jan Havicksz.</option>
+                <option name="favArtist" value="Michael Sweerts">Sweerts, Michael</option>
+                <option name="favArtist" value="Cornelis Troost">Troost, Cornelis</option>
+                <option name="favArtist" value="Jean Baptiste Vanmour">
+                    Vanmour, Jean Baptiste
+                </option>
+                <option name="favArtist" value="Willem van de Velde (I)">Velde (I), Willem van de</option>
+                <option name="favArtist" value="Willem van de Velde (II)">
+                    Velde (II), Willem van de
+                </option>
+                <option name="favArtist" value="Adriaen Pietersz. van de Venne">
+                    Venne, Adriaen Pietersz. van de
+                </option>
+                <option name="favArtist" value="Johannes Vermeer">Vermeer, Johannes</option>
+                <option name="favArtist" value="Johannes Cornelisz. Verspronck">
+                    Verspronck, Johannes Cornelisz.
+                </option>
+                <option name="favArtist" value="Hendrik Voogd">Voogd, Hendrik</option>
 
             </select>
             <button class="submit-button" type="submit">Submit</button>
