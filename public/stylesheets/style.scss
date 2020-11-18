@@ -277,7 +277,39 @@ ul {
       opacity: 0.5;
     }
 
-    
+    &__profile-pic {
+      padding: 20px 10px;
+      text-align: center;
+      
+      .profile-photo {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        &__card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 15px;
+
+          img{
+            width: 150px;
+            height: 150px;
+
+          }
+          form {
+            display: none;
+          }
+          
+        }
+        &__card:hover form{
+          display: block;
+        }
+      }
+    }
 
     &__title {
       text-align: center;
