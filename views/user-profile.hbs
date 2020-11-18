@@ -163,12 +163,13 @@
                 <figure class="artwork">
                     <img class="artwork__img" src="{{this.[1]}}" alt="{{this.[0]}}">
                     <figcaption class="artwork__caption">{{this.[0]}}</figcaption>
+                
+                    <form class="artwork__form" action="/add" method="POST" id="collectionItem">
+                        <input value="{{this.[1]}}" name="collectionItemImage" type="hidden">
+                        <input value="{{this.[0]}}" name="collectionItemTitle" type="hidden">
+                        <button type="submit">Add to your Collection</button>
+                    </form>
                 </figure>
-                <form action="/add" method="POST" id="collectionItem">
-                    <input value="{{this.[1]}}" name="collectionItemImage" type="hidden">
-                    <input value="{{this.[0]}}" name="collectionItemTitle" type="hidden">
-                    <button type="submit">Add {{this.[0]}} to your Collection</button>
-                </form>
                 {{/each}}
             </div>
         </div>

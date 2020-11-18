@@ -368,19 +368,43 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   padding: 15px;
+  position: relative;
+  font-size: 0.8em;
 }
 
 .user__body__profile-pic .profile-photo__card img {
   width: 150px;
   height: 150px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
-.user__body__profile-pic .profile-photo__card form {
-  display: none;
+.user__body__profile-pic .profile-photo__card button {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #659dbd;
+  color: #f3e0dc;
+  border: 1px solid #659dbd;
+  padding: 5px;
 }
 
-.user__body__profile-pic .profile-photo__card:hover form {
-  display: block;
+.user__body__profile-pic .profile-photo__card button:hover {
+  color: #659dbd;
+  background-color: #f3e0dc;
+}
+
+.user__body__profile-pic .profile-photo__card:hover button {
+  opacity: 1;
+}
+
+.user__body__profile-pic .profile-photo__card:hover img {
+  opacity: 0.3;
 }
 
 .user__body__title {
@@ -422,19 +446,54 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 40px;
+  margin: 40px;
+  position: relative;
 }
 
 .user__body__artwork .artwork__img {
   max-width: 550px;
   max-height: 550px;
   border-radius: 5px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .user__body__artwork .artwork__caption {
   padding-top: 20px;
   text-align: center;
   max-width: 400px;
+}
+
+.user__body__artwork .artwork__form {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.user__body__artwork .artwork__form button {
+  background-color: #659dbd;
+  color: #f3e0dc;
+  border: 1px solid #659dbd;
+  padding: 10px 15px;
+  font-size: 2rem;
+}
+
+.user__body__artwork .artwork__form button:hover {
+  color: #659dbd;
+  background-color: #f3e0dc;
+}
+
+.user__body__artwork .artwork:hover .artwork__img {
+  opacity: 0.3;
+}
+
+.user__body__artwork .artwork:hover .artwork__form {
+  opacity: 1;
 }
 
 .create {
