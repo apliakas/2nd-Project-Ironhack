@@ -113,20 +113,30 @@ router.get("/create", (req, res) => {
   }
 });
 
-router.post("/create", (req, res) => {
+router.get("/search", (req, res) => {
+  if (req.session.user) {
+    res.render("search", { userInSession: req.session.user });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.post("/search", (req, res) => {
   const user = req.session.user;
   user.artist = req.body.artist;
   if (req.session.user) {
     rijksFetchNewArtist(user);
     setTimeout(() => {
-      res.render("create", { userInSession: user });
+      res.render("search", { userInSession: user });
     }, 1000);
   } else {
     res.redirect("/login");
   }
 });
 
-router.post("/add", (req, res) => {
+//I duplicated the next piece of code so when you add something to your collection it doesn't go to collection, but it stays in the page where you're at
+
+router.post("/addProfile", (req, res) => {
   const user = req.session.user;
   const { collectionItemImage, collectionItemTitle } = req.body;
   if (req.session.user) {
@@ -144,7 +154,34 @@ router.post("/add", (req, res) => {
       User.findOne({ _id: user._id })
         .then((result) => {
           user.collections = result.collections;
-          res.render("create", { userInSession: user });
+          res.render("user-profile", { userInSession: user });
+        })
+        .catch((err) => console.error(err));
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.post("/addSearch", (req, res) => {
+  const user = req.session.user;
+  const { collectionItemImage, collectionItemTitle } = req.body;
+  if (req.session.user) {
+    User.updateOne(
+      { _id: user._id },
+      {
+        $push: {
+          collections: {
+            image: collectionItemImage,
+            title: collectionItemTitle,
+          },
+        },
+      }
+    ).then(() => {
+      User.findOne({ _id: user._id })
+        .then((result) => {
+          user.collections = result.collections;
+          res.render("search", { userInSession: user });
         })
         .catch((err) => console.error(err));
     });
