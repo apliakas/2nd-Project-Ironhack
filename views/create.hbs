@@ -2,10 +2,10 @@
     <nav class="create__nav">
         <div class="user__nav__title">
             <h1 class="museum">Museum </h1>
-            <h4>at home</h2>
+            <h4>at Home</h2>
         </div>
         <div class="nav__menu">
-            <a class="nav__menu__collection" href="/create">Create a collection</a>
+            <a class="nav__menu__collection" href="/create">View your Collection</a>
             <div class="nav__menu__dropdown">
                 <a class="nav__menu__dropdown__button" href="#">{{userInSession.firstName}}
                     <i class='fas fa-angle-down'></i>
@@ -17,7 +17,11 @@
                     <li><a href="/logout">Log out</a></li>
                 </ul>
             </div>
-            <div class="avatar"></div>
+            {{#if userInSession.profilePhoto}}
+            <div class="profile-photo-section"><img class="avatar" src="{{userInSession.profilePhoto}}"></div>
+            {{else}}
+            <div class="profile-photo-section"><img class="avatar" src="image/profile/0.jpg"></div>
+            {{/if}}
         </div>
     </nav>
     <main class="create__body">
