@@ -115,9 +115,9 @@ router.post("/create", (req, res) => {
   }
 });
 
-router.get("/add-to-project-board", (req, res) => res.redirect("/login"));
+router.get("/add", (req, res) => res.redirect("/create"));
 
-router.post("/add-to-project-board", (req, res) => {
+router.post("/add", (req, res) => {
   const user = req.session.user;
   const { projectBoardItemImage, projectBoardItemTitle } = req.body;
   if (req.session.user) {
@@ -131,37 +131,45 @@ router.post("/add-to-project-board", (req, res) => {
           },
         },
       }
-    )
-      .then(() => {
-        user.projectBoard.push({
-          image: projectBoardItemImage,
-          title: projectBoardItemTitle,
-        });
-        console.log(user.projectBoard);
-      })
-      .catch((err) => console.error(err));
-    setTimeout(() => {
-      res.render("create", { userInSession: user });
-    }, 500);
+    ).then(() => {
+      User.findOne({ _id: user._id })
+        .then((result) => {
+          user.projectBoard = result.projectBoard;
+          res.render("create", { userInSession: user });
+        })
+        .catch((err) => console.error(err));
+    });
   } else {
     res.redirect("/login");
   }
 });
 
-// router.post("/add-to-project-board", (req, res) => {
-//   const user = req.session.user;
-//   const { projectBoard } = req.body;
-//   console.dir(projectBoard, { depth: null });
-//   if (req.session.user) {
-//     user.projectBoard.push(projectBoard);
-//     console.dir(user.projectBoard, { depth: null });
-//     setTimeout(() => {
-//       res.render("create", { userInSession: user });
-//     }, 500);
-//   } else {
-//     res.render("login");
-//   }
-// });
+router.post("/delete", (req, res) => {
+  const user = req.session.user;
+  const { projectBoardItemImage, projectBoardItemTitle } = req.body;
+  if (req.session.user) {
+    User.updateOne(
+      { _id: user._id },
+      {
+        $pull: {
+          projectBoard: {
+            image: projectBoardItemImage,
+            title: projectBoardItemTitle,
+          },
+        },
+      }
+    ).then(() => {
+      User.findOne({ _id: user._id })
+        .then((result) => {
+          user.projectBoard = result.projectBoard;
+          res.render("create", { userInSession: user });
+        })
+        .catch((err) => console.error(err));
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
 
 const rijksFetchFavArtist = (user) => {
   artArr.splice(0, artArr.length);
