@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  projectBoard: {
+  collections: {
     type: Array,
     default: [],
   },

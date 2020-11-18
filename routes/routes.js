@@ -119,22 +119,22 @@ router.get("/add", (req, res) => res.redirect("/create"));
 
 router.post("/add", (req, res) => {
   const user = req.session.user;
-  const { projectBoardItemImage, projectBoardItemTitle } = req.body;
+  const { collectionItemImage, collectionItemTitle } = req.body;
   if (req.session.user) {
     User.updateOne(
       { _id: user._id },
       {
         $push: {
-          projectBoard: {
-            image: projectBoardItemImage,
-            title: projectBoardItemTitle,
+          collections: {
+            image: collectionItemImage,
+            title: collectionItemTitle,
           },
         },
       }
     ).then(() => {
       User.findOne({ _id: user._id })
         .then((result) => {
-          user.projectBoard = result.projectBoard;
+          user.collections = result.collections;
           res.render("create", { userInSession: user });
         })
         .catch((err) => console.error(err));
@@ -146,22 +146,22 @@ router.post("/add", (req, res) => {
 
 router.post("/delete", (req, res) => {
   const user = req.session.user;
-  const { projectBoardItemImage, projectBoardItemTitle } = req.body;
+  const { collectionItemImage, collectionItemTitle } = req.body;
   if (req.session.user) {
     User.updateOne(
       { _id: user._id },
       {
         $pull: {
-          projectBoard: {
-            image: projectBoardItemImage,
-            title: projectBoardItemTitle,
+          collections: {
+            image: collectionItemImage,
+            title: collectionItemTitle,
           },
         },
       }
     ).then(() => {
       User.findOne({ _id: user._id })
         .then((result) => {
-          user.projectBoard = result.projectBoard;
+          user.collections = result.collections;
           res.render("create", { userInSession: user });
         })
         .catch((err) => console.error(err));

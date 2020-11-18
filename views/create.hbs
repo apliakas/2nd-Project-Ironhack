@@ -21,21 +21,21 @@
         </div>
     </nav>
     <main class="create__body">
-        <h1>Your Museum @ Home Project Board</h1>
+        <h1>Your Museum at Home Collection</h1>
         <div class="create__body__board">
-            {{#each userInSession.projectBoard}}
+            {{#each userInSession.collections}}
             <figure class="artwork">
                 <img class="artwork-img" src="{{this.image}}" alt="{{this.title}}">
                 <figcaption class="artwork__caption">{{this.title}}</figcaption>
             </figure>
-            <form action="/delete" method="POST" id="projectBoardItem">
-                <input value="{{this.image}}" name="projectBoardItemImage" type="hidden">
-                <input value="{{this.title}}" name="projectBoardItemTitle" type="hidden">
-                <button type="submit">Remove from Project Board</button>
+            <form action="/delete" method="POST" id="collectionItem">
+                <input value="{{this.image}}" name="collectionItemImage" type="hidden">
+                <input value="{{this.title}}" name="collectionItemTitle" type="hidden">
+                <button type="submit">Remove from Collection</button>
             </form>
             {{/each}}
         </div>
-        <h2>Search the Rijksmuseum collections to add images to your project board</h2>
+        <h2>Search Rijksmuseum artists to add works to your Collection</h2>
         <form action=" /create" method="POST">
             <label for="rijks-search">Search for any Dutch artist</label>
             <select name="artist" id="rijks-search">
@@ -178,10 +178,10 @@
             <figure class="artwork">
                 <img class="artwork-img" src="{{this.[0].webImage.url}}" alt="{{this.[0].longTitle}}">
                 <figcaption class="artwork-caption">{{this.[0].longTitle}}</figcaption>
-                <form action="/add" method="POST" id="projectBoardItem">
-                    <input value="{{this.[0].webImage.url}}" name="projectBoardItemImage" type="hidden">
-                    <input value="{{this.[0].longTitle}}" name="projectBoardItemTitle" type="hidden">
-                    <button type="submit">Add {{this.[0].title}} to Project Board</button>
+                <form action="/add" method="POST" id="collectionItem">
+                    <input value="{{this.[0].webImage.url}}" name="collectionItemImage" type="hidden">
+                    <input value="{{this.[0].longTitle}}" name="collectionItemTitle" type="hidden">
+                    <button type="submit">Add {{this.[0].title}} to your Collection</button>
                 </form>
             </figure>
             {{/each}}

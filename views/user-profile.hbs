@@ -5,14 +5,14 @@
             <h4>at home</h2>
         </div>
         <div class="nav__menu">
-            <a class="nav__menu__collection" href="/create">Create a collection</a>
+            <a class="nav__menu__collection" href="/create">View your Collection</a>
             <div class="nav__menu__dropdown">
                 <a class="nav__menu__dropdown__button" href="#">{{userInSession.firstName}}
                     <i class='fas fa-angle-down'></i>
                 </a>
                 <ul>
-                    <li><a href="#">Your profile</a></li>
-                    <li><a href="#">Your collections</a></li>
+                    <li><a href="#">Your Profile</a></li>
+                    <li><a href="#">Your Collection</a></li>
                     <li><a href="#">Explore</a></li>
                     <li><a href="#">Log out</a></li>
                 </ul>
@@ -32,10 +32,10 @@
                     <img class="artwork__img" src="{{this.[1]}}" alt="{{this.[0]}}">
                     <figcaption class="artwork__caption">{{this.[0]}}</figcaption>
                 </figure>
-                <form action="/add" method="POST" id="projectBoardItem">
-                    <input value="{{this.[1]}}" name="projectBoardItemImage" type="hidden">
-                    <input value="{{this.[0]}}" name="projectBoardItemTitle" type="hidden">
-                    <button type="submit">Add {{this.[0]}} to Project Board</button>
+                <form action="/add" method="POST" id="collectionItem">
+                    <input value="{{this.[1]}}" name="collectionItemImage" type="hidden">
+                    <input value="{{this.[0]}}" name="collectionItemTitle" type="hidden">
+                    <button type="submit">Add {{this.[0]}} to your Collection</button>
                 </form>
                 {{/each}}
             </div>
