@@ -301,7 +301,7 @@ ul {
 }
 
 .user__nav .nav__menu .avatar {
-  background-image: url("../image/profile-pic-test.png");
+  /* background-image: url("../image/profile-pic-test.png"); */
   width: 65px;
   height: 65px;
   border-radius: 50%;
@@ -534,6 +534,7 @@ ul {
 .profile-photo-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: lightgray;
 }
 .profile-photo-container figure {

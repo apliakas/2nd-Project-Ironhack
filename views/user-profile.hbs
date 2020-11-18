@@ -17,7 +17,11 @@
                     <li><a href="/logout">Log out</a></li>
                 </ul>
             </div>
-            <div class="avatar"></div>
+            {{#if userInSession.profilePhoto}}
+            <div class="profile-photo-section"><img class="avatar" src="{{userInSession.profilePhoto}}"></div>
+            {{else}}
+            <div class="profile-photo-section"><img class="avatar" src="image/profile/0.jpg"></div>
+            {{/if}}
         </div>
 
     </nav>
@@ -67,9 +71,9 @@
                     </form>
                 </figure>
                 <figure>
-                    <img src="image/profile/5.jpg" alt="Young Woman">
+                    <img src="image/profile/5.jpg" alt="The Widow">
                     <figcaption>
-                        Young Woman by Wenceslaus Hollar
+                        The Widow by Alfred Stevens
                     </figcaption>
                     <form action="/profile-photo" method="POST">
                         <input type="hidden" name="profilePhoto" value="image/profile/5.jpg">
@@ -89,9 +93,9 @@
             </div>
             <div class="profile-photo-men">
                 <figure>
-                    <img src="image/profile/7.jpg" alt="Man">
+                    <img src="image/profile/7.jpg" alt="Joseph Deutz">
                     <figcaption>
-                        Man by Willem Corneliszoon Duyster
+                        Portrait of Joseph Deutz by Michael Sweerts
                     </figcaption>
                     <form action="/profile-photo" method="POST">
                         <input type="hidden" name="profilePhoto" value="image/profile/7.jpg">
