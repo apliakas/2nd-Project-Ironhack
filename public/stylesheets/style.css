@@ -534,3 +534,20 @@ ul {
 .artwork-img {
   max-width: 200px;
 }
+.profile-photo-container {
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+}
+.profile-photo-container figure {
+  padding-bottom: 2rem;
+}
+.profile-photo-men {
+  background-color: lightblue;
+}
+.profile-photo-women {
+  background-color: lightcoral;
+}
+.profile-photo-container img {
+  max-width: 100px;
+}

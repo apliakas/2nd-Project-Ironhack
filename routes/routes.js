@@ -71,6 +71,17 @@ router.get("/user-profile", (req, res) => {
   }
 });
 
+router.post("/profile-photo", (req, res) => {
+  const user = req.session.user;
+  const { profilePhoto } = req.body;
+  User.findOneAndUpdate({ _id: user._id }, { profilePhoto: profilePhoto })
+    .then((result) => {
+      user.profilePhoto = profilePhoto;
+      res.redirect("/user-profile");
+    })
+    .catch((err) => console.error(err));
+});
+
 router.get("/login", (req, res) => res.render("login"));
 
 router.post("/login", (req, res) => {
@@ -109,7 +120,7 @@ router.post("/create", (req, res) => {
     rijksFetchNewArtist(user);
     setTimeout(() => {
       res.render("create", { userInSession: user });
-    }, 500);
+    }, 1000);
   } else {
     res.redirect("/login");
   }
