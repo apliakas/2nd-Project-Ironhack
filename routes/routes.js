@@ -182,6 +182,23 @@ router.post("/delete", (req, res) => {
   }
 });
 
+router.get("/generate-link", (req, res) => {
+  const user = req.session.user;
+  const publicLink = user._id;
+  if (req.session.user) {
+    User.findOneAndUpdate({ _id: user._id }, { publicLink: publicLink })
+      .then((result) => {
+        user.publicLink = publicLink;
+      })
+      .then(() => {
+        res.render("create", { userInSession: user });
+      })
+      .catch((err) => console.error(err));
+  } else {
+    res.redirect("/");
+  }
+});
+
 router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
