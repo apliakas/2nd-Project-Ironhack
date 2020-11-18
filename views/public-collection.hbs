@@ -1,0 +1,12 @@
+{{#if publicCollection}}
+<div class="create__body__board">
+    {{#each publicCollection}}
+    <figure class="artwork">
+        <img class="artwork-img" src="{{this.image}}" alt="{{this.title}}">
+        <figcaption class="artwork__caption">{{this.title}}</figcaption>
+    </figure>
+    {{/each}}
+</div>
+{{else}}
+<p>Sorry!</p>
+{{/if}}

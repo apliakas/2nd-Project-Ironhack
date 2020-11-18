@@ -126,8 +126,6 @@ router.post("/create", (req, res) => {
   }
 });
 
-router.get("/add", (req, res) => res.redirect("/create"));
-
 router.post("/add", (req, res) => {
   const user = req.session.user;
   const { collectionItemImage, collectionItemTitle } = req.body;
@@ -180,6 +178,36 @@ router.post("/delete", (req, res) => {
   } else {
     res.redirect("/login");
   }
+});
+
+router.get("/generate-link", (req, res) => {
+  const user = req.session.user;
+  const publicLink = user._id;
+  if (req.session.user) {
+    User.findOneAndUpdate({ _id: user._id }, { publicLink: publicLink })
+      .then((result) => {
+        user.publicLink = publicLink;
+      })
+      .then(() => {
+        res.render("create", { userInSession: user });
+      })
+      .catch((err) => console.error(err));
+  } else {
+    res.redirect("/");
+  }
+});
+
+router.get("/collections/:publicLink", (req, res) => {
+  const userId = req.params.publicLink;
+  let publicCollection = [];
+  User.findOne({ _id: userId })
+    .then((result) => {
+      publicCollection = result.collections;
+    })
+    .then(() => {
+      res.render("public-collection", { publicCollection: publicCollection });
+    })
+    .catch((err) => console.error(err));
 });
 
 router.get("/logout", (req, res) => {

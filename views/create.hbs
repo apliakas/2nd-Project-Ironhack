@@ -11,10 +11,10 @@
                     <i class='fas fa-angle-down'></i>
                 </a>
                 <ul>
-                    <li><a href="/user-profile">Your profile</a></li>
-                    <li><a href="#">Your collections</a></li>
+                    <li><a href="/user-profile">Your Profile</a></li>
+                    <li><a href="/create">Your Collection</a></li>
                     <li><a href="#">Explore</a></li>
-                    <li><a href="/logout">Log out</a></li>
+                    <li><a href="/logout">Log Out</a></li>
                 </ul>
             </div>
             {{#if userInSession.profilePhoto}}
@@ -26,6 +26,13 @@
     </nav>
     <main class="create__body">
         <h1>Your Museum at Home Collection</h1>
+        {{#if userInSession.collections}}
+        {{#if userInSession.publicLink}}
+        <p>Your Collection's </p><a href="collections/{{userInSession.publicLink}}">shareable public link</a>
+        {{else}}
+        <p>Generate a <a href="/generate-link">shareable public link</a> for your Collection!</p>
+        {{/if}}
+        {{/if}}
         <div class="create__body__board">
             {{#each userInSession.collections}}
             <figure class="artwork">
