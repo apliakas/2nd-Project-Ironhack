@@ -144,6 +144,8 @@ router.post("/add", (req, res) => {
       User.findOne({ _id: user._id })
         .then((result) => {
           user.collections = result.collections;
+        })
+        .then(() => {
           res.render("create", { userInSession: user });
         })
         .catch((err) => console.error(err));
