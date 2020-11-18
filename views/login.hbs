@@ -8,16 +8,17 @@
         <form class="auth__login-form" action="/login" method="POST">
 
             <label for="login-username">Name</label>
-            <input type="text" name="username" id="login-username" autocomplete="off">
+            <input class="login-input" type="text" name="username" id="login-username" autocomplete="off">
 
             <label for="login-password">Password</label>
-            <input type="password" name="password" id="login-password" autocomplete="off">
+            <input class="login-input" type="password" name="password" id="login-password" autocomplete="off">
 
             <button class="submit-button" type="submit">Submit</button>
 
+             {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p>
+            {{/if}}
         </form>
-        {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-        {{/if}}
+       
     </div>
 </div>

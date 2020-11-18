@@ -144,6 +144,7 @@ ul {
       background-color: $blueButtons;
       padding: 10px 15px;
       margin-left: 20px;
+      border: 2px solid $blueButtons;
     }
 
     .links:hover {
@@ -275,6 +276,8 @@ ul {
       z-index: 1;
       opacity: 0.5;
     }
+
+    
 
     &__title {
       text-align: center;

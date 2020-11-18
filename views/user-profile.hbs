@@ -12,7 +12,8 @@
                 </a>
                 <ul>
                     <li><a href="/user-profile">Your Profile</a></li>
-                    <li><a href="/create">Your Collection</a></li>
+
+                    <li><a href="#">Your Collection</a></li>
                     <li><a href="#">Explore</a></li>
                     <li><a href="/logout">Log out</a></li>
                 </ul>
@@ -25,140 +26,141 @@
         </div>
 
     </nav>
-    {{#unless userInSession.profilePhoto}}
-    <div class="profile-photo">
-        <h3>Choose your profile photo</h3>
-        <div class="profile-photo-container">
-            <div class="profile-photo-women">
-                <figure>
-                    <img src="image/profile/1.jpg" alt="Anna Boudaen Courten">
-                    <figcaption>
-                        Anna Boudaen Courten by Salomon Mesdach
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/1.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/2.jpeg" alt="Salome">
-                    <figcaption>
-                        Salome by Jan Adam Kruseman
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/2.jpeg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/3.png" alt="Anemic Lady">
-                    <figcaption>
-                        The Anemic Lady by Samuel van Hoogstraten
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/3.png">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/4.jpg" alt="The Milkmaid">
-                    <figcaption>
-                        The Milkmaid by Johannes Vermeer
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/4.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/5.jpg" alt="The Widow">
-                    <figcaption>
-                        The Widow by Alfred Stevens
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/5.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/6.jpg" alt="Isabella">
-                    <figcaption>
-                        Isabella by Simon Maris
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/6.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-            </div>
-            <div class="profile-photo-men">
-                <figure>
-                    <img src="image/profile/7.jpg" alt="Joseph Deutz">
-                    <figcaption>
-                        Portrait of Joseph Deutz by Michael Sweerts
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/7.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/8.png" alt="Merry Fiddler">
-                    <figcaption>
-                        The Merry Fiddler by Gerard van Honthorst
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/8.png">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/9.jpg" alt="Young Rembrandt">
-                    <figcaption>
-                        Young Rembrandt by Rembrandt van Rijn
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/9.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/10.jpg" alt="Christophe Le More">
-                    <figcaption>
-                        Christophe Le More by Jan Jansz. Mostaert
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/10.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/11.jpg" alt="Jacob van Loo">
-                    <figcaption>
-                        Self Portrait by Jacob van Loo
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/11.jpg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-                <figure>
-                    <img src="image/profile/12.jpeg" alt="Doctor Pozzi">
-                    <figcaption>
-                        Doctor Pozzi by John Singer Sargent
-                    </figcaption>
-                    <form action="/profile-photo" method="POST">
-                        <input type="hidden" name="profilePhoto" value="image/profile/12.jpeg">
-                        <button type="submit">Set as Profile Photo</button>
-                    </form>
-                </figure>
-            </div>
-        </div>
-    </div>
-    {{/unless}}
+
     <main class="user__body">
         <div class="user__body__left"></div>
         <div>
+            {{#unless userInSession.profilePhoto}}
+            <div class="user__body__profile-pic">
+                <h3>Choose your profile photo</h3>
+                <div class="profile-photo">
+                    <div class="profile-photo__women">
+                        <figure>
+                            <img src="image/profile/1.jpg" alt="Anna Boudaen Courten">
+                            <figcaption>
+                                Anna Boudaen Courten by Salomon Mesdach
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/1.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/2.jpeg" alt="Salome">
+                            <figcaption>
+                                Salome by Jan Adam Kruseman
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/2.jpeg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/3.png" alt="Anemic Lady">
+                            <figcaption>
+                                The Anemic Lady by Samuel van Hoogstraten
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/3.png">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/4.jpg" alt="The Milkmaid">
+                            <figcaption>
+                                The Milkmaid by Johannes Vermeer
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/4.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/5.jpg" alt="Young Woman">
+                            <figcaption>
+                                Young Woman by Wenceslaus Hollar
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/5.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/6.jpg" alt="Isabella">
+                            <figcaption>
+                                Isabella by Simon Maris
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/6.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                    </div>
+                    <div class="profile-photo__men">
+                        <figure>
+                            <img src="image/profile/7.jpg" alt="Man">
+                            <figcaption>
+                                Man by Willem Corneliszoon Duyster
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/7.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/8.png" alt="Merry Fiddler">
+                            <figcaption>
+                                The Merry Fiddler by Gerard van Honthorst
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/8.png">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/9.jpg" alt="Young Rembrandt">
+                            <figcaption>
+                                Young Rembrandt by Rembrandt van Rijn
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/9.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/10.jpg" alt="Christophe Le More">
+                            <figcaption>
+                                Christophe Le More by Jan Jansz. Mostaert
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/10.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/11.jpg" alt="Jacob van Loo">
+                            <figcaption>
+                                Self Portrait by Jacob van Loo
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/11.jpg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                        <figure>
+                            <img src="image/profile/12.jpeg" alt="Doctor Pozzi">
+                            <figcaption>
+                                Doctor Pozzi by John Singer Sargent
+                            </figcaption>
+                            <form action="/profile-photo" method="POST">
+                                <input type="hidden" name="profilePhoto" value="image/profile/12.jpeg">
+                                <button type="submit">Set as Profile Photo</button>
+                            </form>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            {{/unless}}
             <h2 class="user__body__title">Hi {{userInSession.firstName}}, need some inspiration? Some examples of your
                 favourite artist {{userInSession.favArtist}} below:</h2>
             <div class="user__body__artwork">
