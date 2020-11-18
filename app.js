@@ -24,6 +24,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/routes"));
+app.use((req, res) => {
+  res.status(404).redirect("/");
+});
 
 app.listen(process.env.PORT, () =>
   console.log(`App running on port ${process.env.PORT}`)

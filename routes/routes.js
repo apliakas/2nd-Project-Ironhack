@@ -126,8 +126,6 @@ router.post("/create", (req, res) => {
   }
 });
 
-router.get("/add", (req, res) => res.redirect("/create"));
-
 router.post("/add", (req, res) => {
   const user = req.session.user;
   const { collectionItemImage, collectionItemTitle } = req.body;
