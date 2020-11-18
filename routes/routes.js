@@ -199,6 +199,19 @@ router.get("/generate-link", (req, res) => {
   }
 });
 
+router.get("/collections/:publicLink", (req, res) => {
+  const userId = req.params.publicLink;
+  let publicCollection = [];
+  User.findOne({ _id: userId })
+    .then((result) => {
+      publicCollection = result.collections;
+    })
+    .then(() => {
+      res.render("public-collection", { publicCollection: publicCollection });
+    })
+    .catch((err) => console.error(err));
+});
+
 router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
