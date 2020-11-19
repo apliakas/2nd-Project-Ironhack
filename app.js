@@ -23,6 +23,8 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
+hbs.registerPartials(path.join(__dirname, "/views/partials"));
+
 app.use("/", require("./routes/routes"));
 app.use((req, res) => {
   res.status(404).redirect("/");
