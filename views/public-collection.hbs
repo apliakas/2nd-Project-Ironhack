@@ -1,12 +1,28 @@
-{{#if publicCollection}}
-<div class="create__body__board">
-    {{#each publicCollection}}
-    <figure class="artwork">
-        <img class="artwork-img" src="{{this.image}}" alt="{{this.title}}">
-        <figcaption class="artwork__caption">{{this.title}}</figcaption>
-    </figure>
-    {{/each}}
+<div class="public">
+    <nav class="public__nav">
+        <div class="public__nav__title">
+            <h1 class="museum">Museum </h1>
+            <h4>at Home</h2>
+        </div>
+        <h4 class="public__nav__suggestion">Log in or sign up to create and share your collections.</h4>
+        <div>
+            <a class="links" href="/login">Log In</a>
+            <a class="links" href="/signup">Sign Up</a>
+        </div>
+    </nav>
+    <main class="public__body">
+        {{#if publicCollection}}
+        <div class="public__body__collection">
+            {{#each publicCollection}}
+            <figure class="artwork">
+                <img class="artwork__img" src="{{this.image}}" alt="{{this.title}}">
+                <figcaption class="artwork__caption">{{this.title}}</figcaption>
+            </figure>
+            {{/each}}
+        </div>
+        {{else}}
+        <p>Sorry!</p>
+        {{/if}}  
+    </main>  
 </div>
-{{else}}
-<p>Sorry!</p>
-{{/if}}
+

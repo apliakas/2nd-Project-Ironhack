@@ -14,8 +14,15 @@ $whitetext: #f3e0dc;
     z-index: 2;
 
     &__title {
-      color: $whitetext;
+      
       font-size: 3rem;
+      a { 
+        text-decoration: none;
+      }
+      .museum {
+        color: $whitetext;
+        
+      }
     }
 
     .nav__menu {
@@ -308,6 +315,9 @@ ul {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
+
+    
   }
 }
 
@@ -547,8 +557,84 @@ ul {
       
     }
   }
-
 }
+
+.public {
+  display: grid;
+  grid-template-rows: 10vh auto;
+
+  &__nav {
+    background-color: $navColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 90px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.53);
+
+    &__suggestion {
+      color: $whitetext;
+    }
+
+    &__title {
+      color: $whitetext;
+      font-size: 3rem;
+    }
+
+    .links {
+      text-decoration: none;
+      color: $whitetext;
+      background-color: $blueButtons;
+      padding: 10px 15px;
+      margin-left: 20px;
+      border: 2px solid $blueButtons;
+    }
+
+    .links:hover {
+      background-color: $whitetext;
+      color: $blueButtons;
+      border: 2px solid $blueButtons;
+    }
+  }
+
+  &__body {
+    background-color: $whitetext;
+    padding-top: 40px;
+    &__collection {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      
+      
+    
+      .artwork {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 10px 30px;
+        position: relative;
+    
+        &__img {
+          max-width: 1250px;
+          max-height: 850px;
+          border-radius: 3px;
+          transition: 0.5s ease;
+        }
+    
+        &__caption {
+          padding-top: 20px;
+          text-align: center;
+          max-width: 600px;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+
+
 
 .footer {
   display: flex;
