@@ -65,7 +65,7 @@ router.get("/user-profile", (req, res) => {
     rijksFetchFavArtist(user);
     setTimeout(() => {
       res.render("user-profile", { userInSession: user });
-    }, 500);
+    }, 1000);
   } else {
     res.redirect("/login");
   }
@@ -145,7 +145,7 @@ router.post("/addProfile", (req, res) => {
     User.updateOne(
       { _id: user._id },
       {
-        $push: {
+        $addToSet: {
           collections: {
             image: collectionItemImage,
             title: collectionItemTitle,
@@ -172,7 +172,7 @@ router.post("/addSearch", (req, res) => {
     User.updateOne(
       { _id: user._id },
       {
-        $push: {
+        $addToSet: {
           collections: {
             image: collectionItemImage,
             title: collectionItemTitle,
@@ -184,7 +184,6 @@ router.post("/addSearch", (req, res) => {
         .then((result) => {
           user.collections = result.collections;
           res.render("search", { userInSession: user });
-
         })
         .catch((err) => console.error(err));
     });
