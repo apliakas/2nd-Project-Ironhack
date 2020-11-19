@@ -828,15 +828,6 @@ ul {
   position: absolute;
   right: -100px;
   background: #bc4639;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   display: none;
   -webkit-transform: translateY(25px);
           transform: translateY(25px);
