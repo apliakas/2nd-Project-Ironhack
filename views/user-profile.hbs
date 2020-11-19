@@ -29,135 +29,19 @@
     <main class="user__body">
         <div class="user__body__left"></div>
         <div>
+            <h2>Welcome to your user profile, {{userInSession.firstName}}!</h2>
+            <p><a href="/edit-profile">Choose a new profile photo</a></p>
+            {{#if edit}}
+            {{#if userInSession.profilePhoto}}
+            {{> profilePhoto }}
+            {{/if}}
+            {{/if}}
             {{#unless userInSession.profilePhoto}}
-            <div class="user__body__profile-pic">
-                <h3>Choose your profile photo</h3>
-                <div class="profile-photo">
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/1.jpg" alt="Anna Boudaen Courten">
-                        <figcaption>
-                            Anna Boudaen Courten
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/1.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/2.jpeg" alt="Salome">
-                        <figcaption>
-                            Salome
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/2.jpeg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/3.png" alt="Anemic Lady">
-                        <figcaption>
-                            The Anemic Lady
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/3.png">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/4.jpg" alt="The Milkmaid">
-                        <figcaption>
-                            The Milkmaid
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/4.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/5.jpg" alt="Young Woman">
-                        <figcaption>
-                            Young Woman
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/5.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/6.jpg" alt="Isabella">
-                        <figcaption>
-                            Isabella
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/6.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/7.jpg" alt="Man">
-                        <figcaption>
-                            Man
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/7.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/8.png" alt="Merry Fiddler">
-                        <figcaption>
-                            The Merry Fiddler
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/8.png">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/9.jpg" alt="Young Rembrandt">
-                        <figcaption>
-                            Young Rembrandt
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/9.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/10.jpg" alt="Christophe Le More">
-                        <figcaption>
-                            Christophe Le More
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/10.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/11.jpg" alt="Jacob van Loo">
-                        <figcaption>
-                            Self Portrait
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/11.jpg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                    <figure class="profile-photo__card">
-                        <img src="image/profile/12.jpeg" alt="Doctor Pozzi">
-                        <figcaption>
-                            Doctor Pozzi
-                        </figcaption>
-                        <form action="/profile-photo" method="POST">
-                            <input type="hidden" name="profilePhoto" value="image/profile/12.jpeg">
-                            <button type="submit">Set as Profile Photo</button>
-                        </form>
-                    </figure>
-                </div>
-            </div>
+            {{> profilePhoto }}
             {{/unless}}
-            <h2 class="user__body__title">Hi {{userInSession.firstName}}, need some inspiration? Some examples of your
-                favourite artist {{userInSession.favArtist}} below:</h2>
+            <h2 class="user__body__title">Need some inspiration to get started?</h2>
+            <h3 class="user__body__title">Hover and click on a few of the works from your chosen artist,
+                <br>{{userInSession.favArtist}}, to add to your Collection.</h3>
             <div class="user__body__artwork">
                 {{#each userInSession.favArtistInfo}}
                 <figure class="artwork">

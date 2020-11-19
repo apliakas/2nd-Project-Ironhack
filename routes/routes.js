@@ -71,6 +71,13 @@ router.get("/user-profile", (req, res) => {
   }
 });
 
+router.get("/edit-profile", (req, res) => {
+  if (req.session.user) {
+    const user = req.session.user;
+    res.render("user-profile", { userInSession: user, edit: true });
+  }
+});
+
 router.post("/profile-photo", (req, res) => {
   const user = req.session.user;
   const { profilePhoto } = req.body;
@@ -113,7 +120,6 @@ router.get("/create", (req, res) => {
   }
 });
 
-//I created this route to render the new Search page
 router.get("/search", (req, res) => {
   if (req.session.user) {
     res.render("search", { userInSession: req.session.user });
@@ -134,9 +140,6 @@ router.post("/search", (req, res) => {
     res.redirect("/login");
   }
 });
-
-//I duplicated the next piece of code so when you add something to your collection it doesn't go to collection, 
-//but it stays in the page where you're at (I needed to duplicated because you can add things to your collection from 2 different pages, user page and search page)
 
 router.post("/addProfile", (req, res) => {
   const user = req.session.user;
