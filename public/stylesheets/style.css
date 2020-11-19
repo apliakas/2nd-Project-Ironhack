@@ -185,7 +185,7 @@ ul {
 }
 
 .homepage__body {
-  background-image: url("../image/collage.png");
+  background-image: url("../image/collage.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -308,6 +308,52 @@ ul {
   margin: 10px 15px;
 }
 
+.user__nav .nav__menu .profile-photo-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.user__nav .nav__menu .profile-photo-section .edit-photo {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #4285F4;
+  color: #f3e0dc;
+  border: 3px solid #4285F4;
+  border-radius: 5px;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+.user__nav .nav__menu .profile-photo-section .edit-photo:hover {
+  color: #4285F4;
+  background-color: #f3e0dc;
+  border: 3px solid #4285F4;
+  border-radius: 5px;
+}
+
+.user__nav .nav__menu .profile-photo-section:hover .edit-photo {
+  opacity: 1;
+}
+
 .user__body {
   background-color: #f3e0dc;
   display: -ms-grid;
@@ -413,7 +459,7 @@ ul {
 
 .user__body__title {
   text-align: center;
-  padding: 40px 0px;
+  padding: 20px 0px;
 }
 
 .user__body__artwork {

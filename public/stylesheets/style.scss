@@ -311,12 +311,11 @@ ul {
   }
 
   &__body {
-    background-image: url("../image/collage.png");
+    background-image: url("../image/collage.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
-
+      
     
   }
 }
@@ -325,7 +324,138 @@ ul {
   display: grid;
   grid-template-rows: 10vh auto;
 
-  @include navBar();
+  &__nav {
+    background-color: $navColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 90px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+
+    &__title {
+      
+      font-size: 3rem;
+      a { 
+        text-decoration: none;
+      }
+      .museum {
+        color: $whitetext;
+        
+      }
+    }
+
+    .nav__menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__collection {
+        padding-right: 40px;
+        text-decoration: none;
+        color: $whitetext;
+      }
+
+      &__dropdown {
+        position: relative;
+
+        &:hover {
+          ul {
+            display: block;
+          }
+        }
+
+        ul {
+          position: absolute;
+          right: -100px;
+          background: $navColor;
+          display: none;
+          transform: translateY(25px);
+          transition: all 0.3s ease;
+          z-index: 2;
+
+          li {
+            display: block;
+
+            a {
+              padding: 20px 40px;
+              display: block;
+              width: 200px;
+            }
+          }
+
+          li:hover {
+            background-color: #d4a59a;
+            color: $navColor;
+          }
+
+          a {
+            color: $whitetext;
+            text-decoration: none;
+          }
+
+          a:hover {
+            color: $navColor;
+          }
+        }
+
+        &__button {
+          text-decoration: none;
+          color: $whitetext;
+          padding: 40px 20px;
+        }
+
+        .fas {
+          padding-left: 15px;
+        }
+      }
+
+      .avatar {
+        background-image: url("../image/profile-pic-test.png");
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background-size: cover;
+        margin: 10px 15px;
+
+      }
+
+      .profile-photo-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        transition: 0.5s ease;
+
+        .edit-photo {
+          transition: 0.5s ease;
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: $blueButtons;
+          color: $whitetext;
+          border: 3px solid $blueButtons;
+          border-radius: 5px;
+          font-size: 0.8em;
+          text-decoration: none;
+
+          &:hover {
+            
+            color: $blueButtons;
+            background-color: $whitetext;
+            border: 3px solid $blueButtons;
+            border-radius: 5px;
+          }
+        }
+        &:hover .edit-photo {
+          opacity: 1;
+        }
+      }
+    }
+  }
 
   &__body {
     background-color: $whitetext;
@@ -406,7 +536,7 @@ ul {
 
     &__title {
       text-align: center;
-      padding: 40px 0px;
+      padding: 20px 0px;
     }
 
     &__artwork {
