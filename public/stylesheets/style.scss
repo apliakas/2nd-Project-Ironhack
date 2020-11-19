@@ -3,6 +3,8 @@ $blueButtons: #659dbd;
 $redFooter: #5c2018;
 $whitetext: #f3e0dc;
 
+
+
 * {
   margin: 0;
   padding: 0;
@@ -166,95 +168,7 @@ ul {
   display: grid;
   grid-template-rows: 10vh auto;
 
-  &__nav {
-    background-color: $navColor;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 90px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.9);
-    z-index: 2;
-
-    &__title {
-      color: $whitetext;
-      font-size: 3rem;
-    }
-
-    .nav__menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &__collection {
-        padding-right: 40px;
-        text-decoration: none;
-        color: $whitetext;
-      }
-
-      &__dropdown {
-        position: relative;
-
-        &:hover {
-          ul {
-            display: block;
-          }
-        }
-
-        ul {
-          position: absolute;
-          right: -100px;
-          background: $navColor;
-          display: none;
-          transform: translateY(25px);
-          transition: all 0.3s ease;
-          z-index: 2;
-
-          li {
-            display: block;
-
-            a {
-              padding: 20px 40px;
-              display: block;
-              width: 200px;
-            }
-          }
-
-          li:hover {
-            background-color: #d4a59a;
-            color: $navColor;
-          }
-
-          a {
-            color: $whitetext;
-            text-decoration: none;
-          }
-
-          a:hover {
-            color: $navColor;
-          }
-        }
-
-        &__button {
-          text-decoration: none;
-          color: $whitetext;
-          padding: 40px 20px;
-        }
-
-        .fas {
-          padding-left: 15px;
-        }
-      }
-
-      .avatar {
-        background-image: url("../image/profile-pic-test.png");
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        background-size: cover;
-        margin: 10px 15px;
-      }
-    }
-  }
+  @include navBar();
 
   &__body {
     background-color: $whitetext;
@@ -347,59 +261,7 @@ ul {
       align-items: center;
       align-content: space-between;
 
-      .artwork {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        margin: 40px;
-        position: relative;
-
-        &__img {
-          max-width: 550px;
-          max-height: 550px;
-          border-radius: 5px;
-          transition: 0.5s ease;
-        }
-
-        &__caption {
-          padding-top: 20px;
-          text-align: center;
-          max-width: 400px;
-        }
-
-        &__form {
-          transition: 0.5s ease;
-          opacity: 0;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          
-          button {
-            background-color: $blueButtons;
-            color: $whitetext;
-            border: 1px solid $blueButtons;
-            padding: 10px 15px;
-            font-size: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-            &:hover {
-              color: $blueButtons;
-              background-color: $whitetext;
-              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            }
-          }
-        }
-
-        &:hover .artwork__img {
-          opacity: 0.3;
-        }
-        &:hover .artwork__form {
-          opacity: 1;
-        }
-      }
+      @include artwork();
     }
   }
 }
@@ -408,96 +270,7 @@ ul {
   display: grid;
   grid-template-rows: 10vh auto;
 
-  &__nav {
-    background-color: $navColor;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 90px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.9);
-    z-index: 2;
-
-    &__title {
-      color: $whitetext;
-      font-size: 3rem;
-    }
-
-    .nav__menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &__collection {
-        padding-right: 40px;
-        text-decoration: none;
-        color: $whitetext;
-      }
-
-      &__dropdown {
-        position: relative;
-
-        &:hover {
-          ul {
-            display: block;
-          }
-        }
-
-        ul {
-          position: absolute;
-          right: -100px;
-          background: $navColor;
-          display: none;
-          transform: translateY(25px);
-          transition: all 0.3s ease;
-          z-index: 2;
-
-          li {
-            display: block;
-
-            a {
-              padding: 20px 40px;
-              display: block;
-              width: 200px;
-            }
-          }
-
-          li:hover {
-            background-color: #d4a59a;
-            color: $navColor;
-          }
-
-          a {
-            color: $whitetext;
-            text-decoration: none;
-          }
-
-          a:hover {
-            color: $navColor;
-          }
-        }
-
-        &__button {
-          text-decoration: none;
-          color: $whitetext;
-          padding: 40px 20px;
-        }
-
-        .fas {
-          padding-left: 15px;
-        }
-      }
-
-      .avatar {
-        background-image: url("../image/profile-pic-test.png");
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        background-size: cover;
-        margin: 10px 15px;
-      }
-    }
-  }
-  
+  @include navBar();
 
   &__body {
     background-color: $whitetext;
@@ -556,61 +329,8 @@ ul {
         justify-content: center;
         align-items: center;
         align-content: space-between;
-  
-        .artwork {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          align-items: center;
-          margin: 40px;
-          position: relative;
-  
-          &__img {
-            max-width: 550px;
-            max-height: 550px;
-            border-radius: 5px;
-            transition: 0.5s ease;
-          }
-  
-          &__caption {
-            padding-top: 20px;
-            text-align: center;
-            max-width: 400px;
-          }
-  
-          &__form {
-            transition: 0.5s ease;
-            opacity: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            
-            button {
-              background-color: $blueButtons;
-              color: $whitetext;
-              border: 1px solid $blueButtons;
-              padding: 10px 15px;
-              font-size: 2rem;
-              box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-              transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            
-  
-              &:hover {
-                color: $blueButtons;
-                background-color: $whitetext;
-                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-              }
-            }
-          }
-  
-          &:hover .artwork__img {
-            opacity: 0.3;
-          }
-          &:hover .artwork__form {
-            opacity: 1;
-          }
-        }
+        
+        @include artwork();
       }
     }
   }
@@ -620,6 +340,51 @@ ul {
   display: grid;
   grid-template-rows: 10vh auto;
 
+  @include navBar();
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: $whitetext;
+
+    &__artwork {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-content: space-between;
+
+      @include artwork();
+    }
+  }
+
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $redFooter;
+  color: $whitetext;
+  font-size: 1.3rem;
+  padding: 15px;
+
+  &__author {
+    width: 300px;
+  }
+
+  &__technology {
+    font-size: 1.1rem;
+  }
+}
+
+//mixins
+
+@mixin navBar {
   &__nav {
     background-color: $navColor;
     display: flex;
@@ -658,9 +423,6 @@ ul {
           position: absolute;
           right: -100px;
           background: $navColor;
-          justify-content: space-around;
-          align-items: flex-start;
-          flex-direction: column;
           display: none;
           transform: translateY(25px);
           transition: all 0.3s ease;
@@ -712,95 +474,61 @@ ul {
       }
     }
   }
+}
 
-  &__body {
+@mixin artwork {
+  .artwork {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
-    background-color: $whitetext;
+    margin: 40px;
+    position: relative;
 
-    &__artwork {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      align-content: space-between;
+    &__img {
+      max-width: 550px;
+      max-height: 550px;
+      border-radius: 5px;
+      transition: 0.5s ease;
+    }
 
-      .artwork {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        margin: 40px;
-        position: relative;
+    &__caption {
+      padding-top: 20px;
+      text-align: center;
+      max-width: 400px;
+    }
 
-        &__img {
-          max-width: 550px;
-          max-height: 550px;
-          border-radius: 5px;
-          transition: 0.5s ease;
-        }
+    &__form {
+      transition: 0.5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      button {
+        background-color: $blueButtons;
+        color: $whitetext;
+        border: 1px solid $blueButtons;
+        padding: 10px 15px;
+        font-size: 2rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      
 
-        &__caption {
-          padding-top: 20px;
-          text-align: center;
-          max-width: 400px;
-        }
-
-        &__form {
-          transition: 0.5s ease;
-          opacity: 0;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          
-          button {
-            background-color: $blueButtons;
-            color: $whitetext;
-            border: 1px solid $blueButtons;
-            padding: 10px 15px;
-            font-size: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-            &:hover {
-              color: $blueButtons;
-              background-color: $whitetext;
-              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            }
-          }
-        }
-
-        &:hover .artwork__img {
-          opacity: 0.3;
-        }
-        &:hover .artwork__form {
-          opacity: 1;
+        &:hover {
+          color: $blueButtons;
+          background-color: $whitetext;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
       }
     }
-  }
 
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $redFooter;
-  color: $whitetext;
-  font-size: 1.3rem;
-  padding: 15px;
-
-  &__author {
-    width: 300px;
-  }
-
-  &__technology {
-    font-size: 1.1rem;
+    &:hover .artwork__img {
+      opacity: 0.3;
+    }
+    &:hover .artwork__form {
+      opacity: 1;
+    }
   }
 }
