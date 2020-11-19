@@ -240,6 +240,7 @@ router.get("/generate-link", (req, res) => {
 });
 
 router.get("/collections/:publicLink", (req, res) => {
+  const user = req.session.user;
   const userId = req.params.publicLink;
   let publicCollection = [];
   User.findOne({ _id: userId })
@@ -247,7 +248,10 @@ router.get("/collections/:publicLink", (req, res) => {
       publicCollection = result.collections;
     })
     .then(() => {
-      res.render("public-collection", { publicCollection: publicCollection });
+      res.render("public-collection", {
+        publicCollection: publicCollection,
+        userInSession: user,
+      });
     })
     .catch((err) => console.error(err));
 });
@@ -262,7 +266,7 @@ const rijksFetchFavArtist = (user) => {
   const { favArtist } = user;
   axios
     .get(
-      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${favArtist}&ps=20&imgOnly=true&type=painting`
+      `https://www.rijksmuseum.nl/api/en/collection?key=Kp3DbvMR&involvedMaker=${favArtist}&ps=25&imgOnly=true&type=painting`
     )
     .then((res) => {
       for (let art of res.data.artObjects) {

@@ -1,23 +1,26 @@
 <div class="search">
   <nav class="search__nav">
     <div class="search__nav__title">
-      <h1 class="museum">Museum </h1>
-      <h4>at Home</h2>
+      <a href="/search">
+        <h1 class="museum">Museum </h1>
+        <h4 class="museum">at Home</h2>
+      </a>
     </div>
     <div class="nav__menu">
-      <a class="nav__menu__collection" href="/search">Search</a>
+      <a class="nav__menu__collection" href="/search">Search paintings</a>
+      <a class="nav__menu__collection" href="/create">Your Collection</a>
       <div class="nav__menu__dropdown">
         <a class="nav__menu__dropdown__button" href="#">{{userInSession.firstName}}
           <i class='fas fa-angle-down'></i>
         </a>
         <ul>
           <li><a href="/user-profile">Your Profile</a></li>
-          <li><a href="/create">Your Collection</a></li>
           <li><a href="/logout">Log Out</a></li>
         </ul>
       </div>
       {{#if userInSession.profilePhoto}}
-      <div class="profile-photo-section"><img class="avatar" src="{{userInSession.profilePhoto}}"></div>
+      <div class="profile-photo-section"><a href="/user-profile"><img class="avatar"
+            src="{{userInSession.profilePhoto}}"></a></div>
       {{else}}
       <div class="profile-photo-section"><img class="avatar" src="image/profile/0.jpg"></div>
       {{/if}}
@@ -166,7 +169,7 @@
         </select>
         <button type="submit">Submit</button>
       </div>
-      
+
     </form>
     {{#if userInSession.resultsArr}}
     <h2 class="results">Results from your artist, {{userInSession.artist}}, below:</h2>
