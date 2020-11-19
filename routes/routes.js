@@ -65,9 +65,16 @@ router.get("/user-profile", (req, res) => {
     rijksFetchFavArtist(user);
     setTimeout(() => {
       res.render("user-profile", { userInSession: user });
-    }, 500);
+    }, 1000);
   } else {
     res.redirect("/login");
+  }
+});
+
+router.get("/edit-profile", (req, res) => {
+  if (req.session.user) {
+    const user = req.session.user;
+    res.render("user-profile", { userInSession: user, edit: true });
   }
 });
 
@@ -113,27 +120,35 @@ router.get("/create", (req, res) => {
   }
 });
 
-router.post("/create", (req, res) => {
+router.get("/search", (req, res) => {
+  if (req.session.user) {
+    res.render("search", { userInSession: req.session.user });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.post("/search", (req, res) => {
   const user = req.session.user;
   user.artist = req.body.artist;
   if (req.session.user) {
     rijksFetchNewArtist(user);
     setTimeout(() => {
-      res.render("create", { userInSession: user });
+      res.render("search", { userInSession: user });
     }, 1000);
   } else {
     res.redirect("/login");
   }
 });
 
-router.post("/add", (req, res) => {
+router.post("/addProfile", (req, res) => {
   const user = req.session.user;
   const { collectionItemImage, collectionItemTitle } = req.body;
   if (req.session.user) {
     User.updateOne(
       { _id: user._id },
       {
-        $push: {
+        $addToSet: {
           collections: {
             image: collectionItemImage,
             title: collectionItemTitle,
@@ -144,7 +159,34 @@ router.post("/add", (req, res) => {
       User.findOne({ _id: user._id })
         .then((result) => {
           user.collections = result.collections;
-          res.render("create", { userInSession: user });
+          res.render("user-profile", { userInSession: user });
+        })
+        .catch((err) => console.error(err));
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.post("/addSearch", (req, res) => {
+  const user = req.session.user;
+  const { collectionItemImage, collectionItemTitle } = req.body;
+  if (req.session.user) {
+    User.updateOne(
+      { _id: user._id },
+      {
+        $addToSet: {
+          collections: {
+            image: collectionItemImage,
+            title: collectionItemTitle,
+          },
+        },
+      }
+    ).then(() => {
+      User.findOne({ _id: user._id })
+        .then((result) => {
+          user.collections = result.collections;
+          res.render("search", { userInSession: user });
         })
         .catch((err) => console.error(err));
     });

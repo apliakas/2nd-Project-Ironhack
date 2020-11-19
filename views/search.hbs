@@ -1,0 +1,190 @@
+<div class="search">
+  <nav class="search__nav">
+    <div class="search__nav__title">
+      <h1 class="museum">Museum </h1>
+      <h4>at Home</h2>
+    </div>
+    <div class="nav__menu">
+      <a class="nav__menu__collection" href="/search">Search</a>
+      <div class="nav__menu__dropdown">
+        <a class="nav__menu__dropdown__button" href="#">{{userInSession.firstName}}
+          <i class='fas fa-angle-down'></i>
+        </a>
+        <ul>
+          <li><a href="/user-profile">Your Profile</a></li>
+          <li><a href="/create">Your Collection</a></li>
+          <li><a href="/logout">Log Out</a></li>
+        </ul>
+      </div>
+      {{#if userInSession.profilePhoto}}
+      <div class="profile-photo-section"><img class="avatar" src="{{userInSession.profilePhoto}}"></div>
+      {{else}}
+      <div class="profile-photo-section"><img class="avatar" src="image/profile/0.jpg"></div>
+      {{/if}}
+    </div>
+  </nav>
+  <main class="search__body">
+    <h2>Search Rijksmuseum artists to add works to your Collection</h2>
+    <form class="search__body__form" action=" /search" method="POST">
+      <label for="rijks-search">Search for any Dutch artist: </label>
+      <div class="search__body__form__selector">
+        <select name="artist" id="rijks-search">
+          {{#if userInSession.artist}}
+          <option name="artist" value="{{userInSession.artist}}" selected="selected">{{userInSession.artist}}
+          </option>
+          <option name="artist" value="Pieter Aertsen">Aertsen, Pieter</option>
+          {{else}}
+          <option name="artist" value="Pieter Aertsen">Aertsen, Pieter</option>
+          {{/if}}
+          <option name="artist" value="Lourens Alma Tadema">
+            Alma Tadema, Lawrence
+          </option>
+          <option name="artist" value="Hendrick Avercamp">Avercamp, Hendrick</option>
+          <option name="artist" value="Dirck van Baburen">Baburen, Dirck van</option>
+          <option name="artist" value="Ludolf Bakhuysen">Bakhuysen, Ludolf</option>
+          <option name="artist" value="Nicolaes Pietersz. Berchem">
+            Berchem, Nicolaes Pietersz.
+          </option>
+          <option name="artist" value="Gerrit Adriaensz. Berckheyde">
+            Berckheyde, Gerrit Adriaensz.
+          </option>
+          <option name="artist" value="Joachim Bueckelaer">Bueckelaer, Joachim</option>
+          <option name="artist" value="Albert Gerard Bilders">
+            Bilders, Albert Gerard
+          </option>
+          <option name="artist" value="Abraham Bloemaert">Bloemaert, Abraham</option>
+          <option name="artist" value="Ferdinand Bol">Bol, Ferdinand</option>
+          <option name="artist" value="Gerard ter Borch (II)">Borch (II), Gerard ter</option>
+          <option name="artist" value="Jan Both">Both, Jan</option>
+          <option name="artist" value="George Hendrik Breitner">
+            Breitner, George Hendrik
+          </option>
+          <option name="artist" value="Hendrick ter Brugghen">
+            Brugghen, Hendrick ter
+          </option>
+          <option name="artist" value="Willem Pietersz. Buytewech">
+            Buytewech, Willem Pietersz.
+          </option>
+          <option name="artist" value="Pieter Claesz.">Claesz., Pieter</option>
+          <option name="artist" value="Adriaen Coorte">Coorte, Adriaen</option>
+          <option name="artist" value="Cornelis Cornelisz. van Haarlem">
+            Cornelisz. van Haarlem, Cornelis
+          </option>
+          <option name="artist" value="Jacob Cornelisz. van Oostsanen">
+            Cornelisz. van Oostsanen, Jacob
+          </option>
+          <option name="artist" value="Aelbert Cuyp">Cuyp, Aelbert</option>
+          <option name="artist" value="Gerard Dou">Dou, Gerard</option>
+          <option name="artist" value="Karel du Jardin">du Jardin, Karel</option>
+          <option name="artist" value="Anthony van Dyck">Dyck, Anthony van</option>
+          <option name="artist" value="Govert Flinck">Flinck, Govert</option>
+          <option name="artist" value="Geertgen tot Sint Jans">
+            Geertgen tot Sint Jans
+          </option>
+          <option name="artist" value="Jacob de Gheyn (II)">Gheyn (II), Jacob de</option>
+          <option name="artist" value="Vincent van Gogh">Gogh, Vincent van</option>
+          <option name="artist" value="Dirck Hals">Hals, Dirck</option>
+          <option name="artist" value="Frans Hals">Hals, Frans</option>
+          <option name="artist" value="Willem Claesz. Heda">Heda, Willem Claesz.</option>
+          <option name="artist" value="Jan Davidsz. de Heem">
+            Heem, Jan Davidsz. de
+          </option>
+          <option name="artist" value="Maarten van Heemskerck">
+            Heemskerck, Maarten van
+          </option>
+          <option name="artist" value="Bartholomeus van der Helst">
+            Helst, Bartholomeus van der
+          </option>
+          <option name="artist" value="Gerard van Honthorst">
+            Honthorst, Gerard van
+          </option>
+          <option name="artist" value="Pieter de Hooch">Hooch, Pieter de</option>
+          <option name="artist" value="Isaac Israels">Israels, Isaac</option>
+          <option name="artist" value="Jacob Jordaens (I)">Jordaens (I), Jacob</option>
+          <option name="artist" value="Adriaen Thomasz. Key">
+            Key, Adriaen Thomasz.
+          </option>
+          <option name="artist" value="Philips Koninck">Koninck, Philips</option>
+          <option name="artist" value="Willem Bartel van der Kooi">
+            Kooi, Willem Bartel van der
+          </option>
+          <option name="artist" value="Jan Adam Kruseman">Kruseman, Jan Adam</option>
+          <option name="artist" value="Gerard de Lairesse">Lairesse, Gerard de</option>
+          <option name="artist" value="Pieter Lastman">Lastman, Pieter</option>
+          <option name="artist" value="Adriaan de Lelie">Lelie, Adriaan de</option>
+          <option name="artist" value="Jan Lievens">Lievens, Jan</option>
+          <option name="artist" value="Jean-Etienne Liotard">
+            Liotard, Jean-Etienne
+          </option>
+          <option name="artist" value="Nicolaes Maes">Maes, Nicolaes</option>
+          <option name="artist" value="Karel van Mander (I)">Mander (I), Karel van</option>
+          <option name="artist" value="Anton Mauve">Mauve, Anton</option>
+          <option name="artist" value="Meester van Alkmaar">Meester van Alkmaar</option>
+          <option name="artist" value="Hendrik Willem Mesdag">Mesdag, Hendrik Willem</option>
+          <option name="artist" value="Michiel Jansz. van Mierevelt">
+            Mierevelt, Michiel Jansz. van
+          </option>
+          <option name="artist" value="Abraham Mignon">Mignon, Abraham</option>
+          <option name="artist" value="Adriaen van Ostade">Ostade, Adriaen van</option>
+          <option name="artist" value="Jan Willem Pieneman">Pieneman, Jan Willem</option>
+          <option name="artist" value="Nicolaas Pieneman">Pieneman, Nicolaas</option>
+          <option name="artist" value="Frans Jansz. Post">Post, Frans Jansz.</option>
+          <option name="artist" value="Paulus Potter">Potter, Paulus</option>
+          <option name="artist" value="Rembrandt van Rijn">Rembrandt</option>
+          <option name="artist" value="Rembrandt van Rijn">Rijn, Rembrandt van</option>
+          <option name="artist" value="Peter Paul Rubens">Rubens, Peter Paul</option>
+          <option name="artist" value="Jacob Isaacksz van Ruisdael">
+            Ruisdael, Jacob Isaacksz. van
+          </option>
+          <option name="artist" value="Salomon van Ruysdael">
+            Ruysdael, Salomon van
+          </option>
+          <option name="artist" value="Pieter Jansz. Saenredam">
+            Saenredam, Pieter Jansz.
+          </option>
+          <option name="artist" value="Roelant Savery">Savery, Roelant</option>
+          <option name="artist" value="Jan van Scorel">Scorel, Jan van</option>
+          <option name="artist" value="Hercules Segers">Segers, Hercules</option>
+          <option name="artist" value="Jan Havicksz. Steen">Steen, Jan Havicksz.</option>
+          <option name="artist" value="Michael Sweerts">Sweerts, Michael</option>
+          <option name="artist" value="Cornelis Troost">Troost, Cornelis</option>
+          <option name="artist" value="Jean Baptiste Vanmour">
+            Vanmour, Jean Baptiste
+          </option>
+          <option name="artist" value="Willem van de Velde (I)">Velde (I), Willem van de</option>
+          <option name="artist" value="Willem van de Velde (II)">
+            Velde (II), Willem van de
+          </option>
+          <option name="artist" value="Adriaen Pietersz. van de Venne">
+            Venne, Adriaen Pietersz. van de
+          </option>
+          <option name="artist" value="Johannes Vermeer">Vermeer, Johannes</option>
+          <option name="artist" value="Johannes Cornelisz. Verspronck">
+            Verspronck, Johannes Cornelisz.
+          </option>
+          <option name="artist" value="Hendrik Voogd">Voogd, Hendrik</option>
+        </select>
+        <button type="submit">Submit</button>
+      </div>
+      
+    </form>
+    {{#if userInSession.resultsArr}}
+    <h2 class="results">Results from your artist, {{userInSession.artist}}, below:</h2>
+
+    <div class="search__body__artwork">
+      {{#each userInSession.resultsArr}}
+      <figure class="artwork">
+        <img class="artwork__img" src="{{this.[0].webImage.url}}" alt="{{this.[0].longTitle}}">
+        <figcaption class="artwork__caption">{{this.[0].longTitle}}</figcaption>
+        <form class="artwork__form" action="/addSearch" method="POST" id="collectionItem">
+          <input value="{{this.[0].webImage.url}}" name="collectionItemImage" type="hidden">
+          <input value="{{this.[0].longTitle}}" name="collectionItemTitle" type="hidden">
+          <button type="submit">Add to your Collection</button>
+        </form>
+      </figure>
+      {{/each}}
+    </div>
+    {{/if}}
+  </main>
+
+</div>
