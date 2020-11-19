@@ -3,9 +3,9 @@
         <div class="create__nav__title">
             <a href="/search">
                 <h1 class="museum">Museum </h1>
-                <h4 class="museum">at Home</h2>  
+                <h4 class="museum">at Home</h2>
             </a>
-            
+
         </div>
         <div class="nav__menu">
             <a class="nav__menu__collection" href="/search">Search paintings</a>
@@ -20,7 +20,8 @@
                 </ul>
             </div>
             {{#if userInSession.profilePhoto}}
-            <div class="profile-photo-section"><img class="avatar" src="{{userInSession.profilePhoto}}"></div>
+            <div class="profile-photo-section"><a href="/user-profile"><img class="avatar"
+                        src="{{userInSession.profilePhoto}}"></a></div>
             {{else}}
             <div class="profile-photo-section"><img class="avatar" src="image/profile/0.jpg"></div>
             {{/if}}
@@ -33,15 +34,15 @@
             <div class="create__body__center__share-link">
                 {{#if userInSession.collections}}
                 {{#if userInSession.publicLink}}
-                <p>Go to your collection and share it's public URL using the button below! No sign up required to watch it. </p>
-                <a href="collections/{{userInSession.publicLink}}"> shareable public link</a>
+                <a href="collections/{{userInSession.publicLink}}" target="_blank">{{userInSession.firstName}}, click
+                    here to view your public Collection page!</a>
                 {{else}}
-                <p>Generate a <a href="/generate-link">shareable public link</a> for your Collection!</p>
+                <a href="/generate-link">Generate a new shareable public link for your Collection</a>
                 {{/if}}
-                {{/if}} 
+                {{/if}}
             </div>
 
-            
+
             <div class="create__body__center__board">
                 {{#each userInSession.collections}}
                 <figure class="artwork">
@@ -53,7 +54,7 @@
                         <button type="submit">Remove from Collection</button>
                     </form>
                 </figure>
-            
+
                 {{/each}}
             </div>
         </div>

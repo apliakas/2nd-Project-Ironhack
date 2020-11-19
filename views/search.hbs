@@ -2,8 +2,8 @@
   <nav class="search__nav">
     <div class="search__nav__title">
       <a href="/search">
-          <h1 class="museum">Museum </h1>
-          <h4 class="museum">at Home</h2>  
+        <h1 class="museum">Museum </h1>
+        <h4 class="museum">at Home</h2>
       </a>
     </div>
     <div class="nav__menu">
@@ -19,7 +19,8 @@
         </ul>
       </div>
       {{#if userInSession.profilePhoto}}
-      <div class="profile-photo-section"><img class="avatar" src="{{userInSession.profilePhoto}}"></div>
+      <div class="profile-photo-section"><a href="/user-profile"><img class="avatar"
+            src="{{userInSession.profilePhoto}}"></a></div>
       {{else}}
       <div class="profile-photo-section"><img class="avatar" src="image/profile/0.jpg"></div>
       {{/if}}
@@ -168,7 +169,7 @@
         </select>
         <button type="submit">Submit</button>
       </div>
-      
+
     </form>
     {{#if userInSession.resultsArr}}
     <h2 class="results">Results from your artist, {{userInSession.artist}}, below:</h2>
