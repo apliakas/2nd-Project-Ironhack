@@ -7,7 +7,7 @@
 
         <form class="auth__login-form" action="/login" method="POST">
 
-            <label for="login-username">Name</label>
+            <label for="login-username">Username</label>
             <input class="login-input" type="text" name="username" id="login-username" autocomplete="off">
 
             <label for="login-password">Password</label>
@@ -15,10 +15,10 @@
 
             <button class="submit-button" type="submit">Submit</button>
 
-             {{#if errorMessage}}
+            {{#if errorMessage}}
             <p class="error">{{errorMessage}}</p>
             {{/if}}
         </form>
-       
+
     </div>
 </div>
