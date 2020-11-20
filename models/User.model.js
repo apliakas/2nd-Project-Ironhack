@@ -41,5 +41,15 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+const collectionModel = new mongoose.Schema({
+  publicLink: {
+    type: String,
+  },
+  collections: {
+    type: Array,
+    default: [],
+  },
+})
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
