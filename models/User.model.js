@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  publicLink: {
+  profilePhoto: {
     type: String,
   },
   username: {
@@ -35,21 +35,13 @@ const userSchema = new mongoose.Schema({
   collections: {
     type: Array,
     default: [],
+    image: String,
+    title: String,
   },
-  profilePhoto: {
-    type: String,
-  },
-});
-
-const collectionModel = new mongoose.Schema({
   publicLink: {
     type: String,
   },
-  collections: {
-    type: Array,
-    default: [],
-  },
-})
+});
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
