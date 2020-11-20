@@ -9,12 +9,14 @@ module.exports = (app) => {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        maxAge: 60000, // 1 minute
+        maxAge: 6000000, // 1 minute
       },
-      //   store: new MongoStore({
-      //     mongooseConnection: mongoose.connection,
-      //     ttl: 60 * 60 * 24, // 60 secs 60 min 24 hour
-      //   }),
+         store: new MongoStore({
+           mongooseConnection: mongoose.connection,
+           ttl: 60 * 60 * 24, // 60 secs 60 min 24 hour
+         }),
     })
   );
 };
+
+
