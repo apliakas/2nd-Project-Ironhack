@@ -150,7 +150,9 @@
 
             </select>
             <button class="submit-button" type="submit">Submit</button>
-
+            {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p>
+            {{/if}}
         </form>
 
     </div>
